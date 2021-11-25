@@ -2,50 +2,50 @@
 
 ## Content
 
-- [General info](##Genera_info)
+- [General info](#Genera_info)
 
-- [Inclusion attributes](##Inclusion_attributes)
+- [Inclusion attributes](#Inclusion_attributes)
 
-- [Variables](##Variables)
-- [Variables_Var](###Variables_Var)
-- [Variables_Let](###Variables_Let)
-- [Variables_Const](###Variables_Const)
+- [Variables](#Variables)
+- [Variables_Var](#Variables_Var)
+- [Variables_Let](#Variables_Let)
+- [Variables_Const](#Variables_Const)
 
-- [DataType](##DataType)
+- [DataType](#DataType)
 
-- [TypeConversion](##TypeConversion)
+- [TypeConversion](#TypeConversion)
 
-- [Function](##Function)
-- [Function_Declaration](###Function_Declaration)
-- [Function_Expression](###Function_Expression)
-- [Function_Anonim](###Function_Anonim)
-- [Function_Generator](###Function_Generator)
-- [Function_Arrow](###Function_Arrow)
-- [Function_Closures](###Function_Closures)
+- [Function](#Function)
+- [Function_Declaration](#Function_Declaration)
+- [Function_Expression](#Function_Expression)
+- [Function_Anonim](#Function_Anonim)
+- [Function_Generator](#Function_Generator)
+- [Function_Arrow](#Function_Arrow)
+- [Function_Closures](#Function_Closures)
 
-- [StrictMode](##StrictMode)
-- [CallApply](##CallApply)
-- [Arguments](##Arguments)
+- [StrictMode](#StrictMode)
+- [CallApply](#CallApply)
+- [Arguments](#Arguments)
 
-- [Array](##Array)
+- [Array](#Array)
 
-- [SpreadSintaxis](##SpreadSintaxis)
+- [SpreadSintaxis](#SpreadSintaxis)
 
-- [Object](##Object)
-- [ObjectDefine](###ObjectDefine)
-- [ObjectPropertiesFunction](###ObjectPropertiesFunction)
-- [ObjectCopyNew](###ObjectCopyNew)
-- [ObjectCallApplyBind](###ObjectCallApplyBind)
+- [Object](#Object)
+- [ObjectDefine](#ObjectDefine)
+- [ObjectPropertiesFunction](#ObjectPropertiesFunction)
+- [ObjectCopyNew](#ObjectCopyNew)
+- [ObjectCallApplyBind](#ObjectCallApplyBind)
 
-- [ProtoPrototype](###ProtoPrototype)
+- [ProtoPrototype](#ProtoPrototype)
 
-- [Class](##Class)
+- [Class](#Class)
 
-- [CallBack](##CallBack)
+- [CallBack](#CallBack)
 
-- [Promise](##Promise)
+- [Promise](#Promise)
 
-- [AsyncAwait](##AsyncAwait)
+- [AsyncAwait](#AsyncAwait)
 
 ## Genera_info
 
@@ -58,11 +58,9 @@ scripts are executed in order
 
 ```jsx
 <body>
-  {" "}
   <script src="script.js"></script>
-  //////////////////////
   <script src="script2.js"></script>
-  <script>//////////////////////</script>
+  <script>....</script>
 </body>
 ```
 
@@ -70,8 +68,8 @@ attributes async && defer
 
 ```jsx
 <body>
-  <script defer src="script.js"></script> #run script after full download page
-  <script async src="script2.js"></script> #run script async
+  <script defer src="script.js"></script> //run script after full download page
+  <script async src="script2.js"></script> //run script async
 </body>
 ```
 
@@ -85,8 +83,8 @@ JS has 2 area of visibility: global scope и function scope
 
 ### Variables_Var:
 
-#available inside the function (in which it is declared) and in nested functions:
-#var return "undefined" if it call till get value or declaration:
+Available inside the function (in which it is declared) and in nested functions:
+Var return "undefined" if it call untill set value or declaration:
 
 ```jsx
 var declaration;
@@ -109,8 +107,8 @@ var x = 2;
 
 ### Variables_Let:
 
-#available inside the block (all betveen {}) (in which it is declared) and in nested functions and block{}:
-#let return ReferenceError if it call till declaration && return undefined if it call till get value:
+Available inside the block (all betveen {}) (in which it is declared) and in nested functions and block{}:
+Let return ReferenceError if it call untill declaration && return undefined if it call untill get value:
 
 ```jsx
 console.log(x);
@@ -121,8 +119,8 @@ console.log(x2); //undefined
 
 ### Variables_Const:
 
-#the same as let, diferent - const value can't reset (for type-value), but can reset field or array element for type-reference (object, array)
-#const should always be used, except when it need to reset (use let)
+The same as let, diferent - const value can't reset (for type-value), but can reset field or array element for type-reference (object, array)
+Const should always be used, except when it need to reset (use let)
 
 ```jsx
 const x = "wwwww";
@@ -144,31 +142,33 @@ console.log(x); // ❌TypeError:invalid assignment to const 'x'
 
 https://learn.javascript.ru/types
 
-type-value:
-• number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN())
-const bigInt = 1234567890123456789012345678901234567890n;
-typeof number //number
-• bigint //const bigInt = 1234567890123456789012345678901234567890n;
-typeof bigInt; //"bigint"
-• string
-typeof string //string
-• boolean
-typeof boolean //boolean
-• undefined
-typeof undefined //undefined
-• null
-typeof null //object !!!!!! bug - must be null
-• symbol
-const sym = Symbol("foo");
-typeof sym; // "symbol"
+#### type-value:
 
-type-reference:
-• array
-typeof array //object !!!!!!!!!!!!!
-• function
-typeof function //function
-• object
-typeof object //object
+1. number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN())
+   const bigInt = 1234567890123456789012345678901234567890n;
+   typeof number //number
+2. bigint //const bigInt = 1234567890123456789012345678901234567890n;
+   typeof bigInt; //"bigint"
+3. string
+   typeof string //string
+4. boolean
+   typeof boolean //boolean
+5. undefined
+   typeof undefined //undefined
+6. null
+   typeof null //object !!!!!! bug - must be null
+7. symbol
+   const sym = Symbol("foo");
+   typeof sym; // "symbol"
+
+#### type-reference:
+
+1. array
+   typeof array //object !!!!!!!!!!!!!
+2. function
+   typeof function //function
+3. object
+   typeof object //object
 
 ## TypeConversion
 
@@ -197,7 +197,7 @@ https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions
 
 ### Function_Declaration
 
-a function declared in the main code flow (created until code run -- so call function untill its create - work!)
+A function declared in the main code flow (created until code run -- so call function untill its create - work!)
 
 ```jsx
 function decl(x) {
@@ -211,7 +211,7 @@ function decl(x) {
 
 ### Function_Expression
 
-function declaration in the context of some expression, for example assignment (created after code run -- so call function untill its create - not work!)
+Function declaration in the context of some expression, for example assignment (created after code run -- so call function untill its create - not work!)
 
 ```jsx
 const expr = function (x) {
@@ -221,7 +221,7 @@ const expr = function (x) {
 
 ### Function_Anonim
 
-fubction without name - can be passed as parameter other function
+Fubction without name - can be passed as parameter other function
 
 ```jsx
 const ex = function (x, y) {
@@ -251,8 +251,8 @@ function* generator() {
 
 ### Function_Arrow
 
-function - always anonim function (without name) not have own "this", "arguments", "super", "new.target"
-use outer "this". Can't creat objects from arrow functions.
+Function - always anonim function (without name) not have own "this", "arguments", "super", "new target".
+Use outer "this". Can't create objects from arrow functions.
 
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 
@@ -306,7 +306,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/arguments
 
-this is array wich content function arguments
+This is array wich content function arguments
 
 ```jsx
 function func1(a, b, c) {
@@ -319,7 +319,7 @@ func1(1, 2, 3);
 
 ## Array
 
-typeof array //object !!!!!!!!!!!!! #array is spesial type of object
+Typeof array //object !!!!!!!!!!!!! #array is spesial type of object
 
 ```jsx
 const w = [1, 2, 3, 4, 5];
@@ -438,17 +438,17 @@ setTimeout(book.showInfo.bind(bookCall, "SomeArgument"), 1000);
 
 ## ProtoPrototype
 
-JS - prototype inheritance language
-all function (declaration, expression (not arrow!!)) have propertie "prototype" (Func.prototype = { constructor: function Func() }; //as default)
-all object have object-prototype (template from which the object inherits all properties and methods ); this object-prototype can have own object-prototype ect.... (сhane of prototype)
-object-prototype (in object) create from function.prototype (propertie function) when doing <const f = new Func();>. After object-prototype and function.prototype independent from each other
+JS - prototype inheritance language.
+All function (declaration, expression (not arrow!!)) have propertie "prototype" (Func.prototype = { constructor: function Func() }; //as default).
+All object have object-prototype (template from which the object inherits all properties and methods ); this object-prototype can have own object-prototype ect.... (сhane of prototype).
+Object-prototype (in object) create from function.prototype (propertie function) when doing <const f = new Func();>. After object-prototype and function.prototype independent from each other
 we can get function.prototype by means of Func.prototype properties. We can get access to object-prototype by means of \_\_proto\_\_ (deprecated getter/setter for object-prototype) or Object.getPrototypeOf(obj)/Object.setPrototypeOf(obj, prototype)
 
-https://learn.javascript.ru/function-prototype /////////function prototype f.prototype
-https://learn.javascript.ru/prototype-inheritance ///////object prototype [[prototype]]
+https://learn.javascript.ru/function-prototype //function prototype f.prototype
+https://learn.javascript.ru/prototype-inheritance //object prototype [[prototype]]
 https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/Object_prototypes
 
-all function have propertie "prototype" = as default { constructor: nameFunction } who refer on function-constructor;
+All function have propertie "prototype" = as default { constructor: nameFunction } who refer on function-constructor;
 
 ```jsx
 function Func() {
@@ -489,8 +489,8 @@ console.log(fInh.ex); //555
 https://learn.javascript.ru/class
 https://learn.javascript.ru/es-class
 
-class this is syntactic sugar in js, but with important additions, like: UseStrikt, [[IsClassConstructor]]: true, enumerable-false for all methods (metods don't see on for...in) ect.
-class in js haven't Privat && Protected props
+Class this is syntactic sugar in js, but with important additions, like: UseStrict, [[IsClassConstructor]]: true, enumerable-false for all methods (metods don't see on for...in) ect.
+Class in js haven't Privat && Protected props
 
 ```jsx
 //class Declaration
@@ -696,7 +696,7 @@ async function f() {
 f().then(alert); // 1
 ```
 
-or we can return a promise explicitly:
+Or we can return a promise explicitly:
 
 ```jsx
 async function f() {
