@@ -83,8 +83,8 @@ JS has 2 area of visibility: global scope и function scope
 
 ### Variables_Var:
 
-Available inside the function (in which it is declared) and in nested functions:
-Var return "undefined" if it call untill set value or declaration:
+Available inside the function (in which it is declared) and in nested functions.
+Var return "undefined" if it call untill set value or declaration.
 
 ```jsx
 var declaration;
@@ -107,8 +107,8 @@ var x = 2;
 
 ### Variables_Let:
 
-Available inside the block (all betveen {}) (in which it is declared) and in nested functions and block{}:
-Let return ReferenceError if it call untill declaration && return undefined if it call untill get value:
+Available inside the block (all betveen {}) (in which it is declared) and in nested functions and block{}.
+Let return ReferenceError if it call untill declaration && return undefined if it call untill get value.
 
 ```jsx
 console.log(x);
@@ -119,8 +119,8 @@ console.log(x2); //undefined
 
 ### Variables_Const:
 
-The same as let, diferent - const value can't reset (for type-value), but can reset field or array element for type-reference (object, array)
-Const should always be used, except when it need to reset (use let)
+The same as let, diferent - const value can't reset (for type-value), but can reset field or array element for type-reference (object, array).
+Const should always be used, except when it need to reset (use let).
 
 ```jsx
 const x = "wwwww";
@@ -144,9 +144,9 @@ https://learn.javascript.ru/types
 
 #### type-value:
 
-1. number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN())
-   const bigInt = 1234567890123456789012345678901234567890n;
-   typeof number //number
+1. number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN())</br>
+   const bigInt = 1234567890123456789012345678901234567890n;</br>
+   typeof number //number</br>
 2. bigint //const bigInt = 1234567890123456789012345678901234567890n;
    typeof bigInt; //"bigint"
 3. string
