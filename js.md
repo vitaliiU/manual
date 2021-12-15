@@ -16,8 +16,8 @@
 - [TypeConversion](#TypeConversion)
 
 - [Function](#Function)
-- [<h5>Function_Declaration</h5>](#Function_Declaration)
-- [<font size="199">Function_Expression</font>](#Function_Expression)
+- [<h8>Function_Declaration</h8>](#Function_Declaration)
+- [Function_Expression](#Function_Expression)
 - [Function_Anonim](#Function_Anonim)
 - [Function_Generator](#Function_Generator)
 - [Function_Arrow](#Function_Arrow)
