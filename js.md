@@ -16,7 +16,7 @@
 - [TypeConversion](#TypeConversion)
 
 - [Function](#Function)
-- [Function_Declaration](#Function_Declaration)
+- [####Function_Declaration](#Function_Declaration)
 - [Function_Expression](#Function_Expression)
 - [Function_Anonim](#Function_Anonim)
 - [Function_Generator](#Function_Generator)
