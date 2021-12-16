@@ -2,7 +2,7 @@
 
 ## Content
 
-- [General info](#Genera_info)
+- [<h3>General info</h3>](#Genera_info)
 
 - [Inclusion attributes](#Inclusion_attributes)
 
