@@ -53,7 +53,7 @@ JS - java script - ECMAScript (European Computer Manufacturers Association) - st
 
 ## Inclusion_attributes
 
-as rule script include on end Body
+as rule script include on end Body</br>
 scripts are executed in order
 
 ```jsx
@@ -79,7 +79,7 @@ attributes async && defer
 
 https://medium.com/nuances-of-programming/%D0%B2-%D1%87%D1%91%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-var-let-%D0%B8-const-%D0%B2-javascript-3084bfe9f7a3
 
-var, let, const
+<h2>var, let, const</h2>
 
 JS has 2 area of visibility: global scope и function scope
 
@@ -149,26 +149,33 @@ type-value:</br>
 const bigInt = 1234567890123456789012345678901234567890n;</br>
 typeof number //number</br>
 • bigint //const bigInt = 1234567890123456789012345678901234567890n;</br>
-typeof bigInt; //"bigint"
-• string
-typeof string //string
-• boolean
-typeof boolean //boolean
-• undefined
-typeof undefined //undefined
-• null
-typeof null //object !!!!!! bug - must be null
-• symbol
-const sym = Symbol("foo");
-typeof sym; // "symbol"
+typeof bigInt; //"bigint"</br>
+• string</br>
+typeof string //string</br>
+• boolean</br>
+typeof boolean //boolean</br>
+• undefined</br>
+typeof undefined //undefined</br>
+• null</br>
+typeof null //object !!!!!! bug - must be null</br>
+• symbol</br>
+const sym = Symbol("foo");</br>
+typeof sym; // "symbol"</br>
 
-type-reference:
-• array
-typeof array //object !!!!!!!!!!!!!
-• function
-typeof function //function
-• object
-typeof object //object
+type-reference:</br>
+• array</br>
+typeof array //object !!!!!!!!!!!!!</br>
+• function</br>
+typeof function //function</br>
+• object</br>
+typeof object //object</br>
+
+  ```jsx
+   const a = [1, 2, 3, 4];
+   const b = a;
+   b.push(44);
+   console.log(`a=${a},    b=${b}`);
+   ```
 
 ## TypeConversion
 
