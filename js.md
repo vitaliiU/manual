@@ -146,7 +146,6 @@ https://learn.javascript.ru/types
 
 type-value:</br>
 • number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN())</br>
-const bigInt = 1234567890123456789012345678901234567890n;</br>
 typeof number //number</br>
 • bigint //const bigInt = 1234567890123456789012345678901234567890n;</br>
 typeof bigInt; //"bigint"</br>
@@ -326,7 +325,8 @@ func1(1, 2, 3);
 
 ## Array
 
-typeof array //object !!!!!!!!!!!!! #array is spesial type of object
+typeof array //object !!!!!!</br>
+array is spesial type of object
 
 ```jsx
 const w = [1, 2, 3, 4, 5];
@@ -445,17 +445,17 @@ setTimeout(book.showInfo.bind(bookCall, "SomeArgument"), 1000);
 
 ## ProtoPrototype
 
-JS - prototype inheritance language
-all function (declaration, expression (not arrow!!)) have propertie "prototype" (Func.prototype = { constructor: function Func() }; //as default)
-all object have object-prototype (template from which the object inherits all properties and methods ); this object-prototype can have own object-prototype ect.... (сhane of prototype)
-object-prototype (in object) create from function.prototype (propertie function) when doing <const f = new Func();>. After object-prototype and function.prototype independent from each other
-we can get function.prototype by means of Func.prototype properties. We can get access to object-prototype by means of \_\_proto\_\_ (deprecated getter/setter for object-prototype) or Object.getPrototypeOf(obj)/Object.setPrototypeOf(obj, prototype)
-
-https://learn.javascript.ru/function-prototype /////////function prototype f.prototype
-https://learn.javascript.ru/prototype-inheritance ///////object prototype [[prototype]]
-https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/Object_prototypes
-
-all function have propertie "prototype" = as default { constructor: nameFunction } who refer on function-constructor;
+JS - prototype inheritance language</br>
+all function (declaration, expression (not arrow!!)) have propertie "prototype" (Func.prototype = { constructor: function Func() }; //as default)</br>
+all object have object-prototype (template from which the object inherits all properties and methods ); this object-prototype can have own object-prototype ect.... (сhane of prototype)</br>
+object-prototype (in object) create from function.prototype (propertie function) when doing <const f = new Func();>. After object-prototype and function.prototype independent from each other</br>
+we can get function.prototype by means of Func.prototype properties. We can get access to object-prototype by means of \_\_proto\_\_ (deprecated getter/setter for object-prototype) or Object.getPrototypeOf(obj)/Object.setPrototypeOf(obj, prototype)</br>
+</br>
+https://learn.javascript.ru/function-prototype /////////function prototype f.prototype</br>
+https://learn.javascript.ru/prototype-inheritance ///////object prototype [[prototype]]</br>
+https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/Object_prototypes</br>
+</br>
+all function have propertie "prototype" = as default { constructor: nameFunction } who refer on function-constructor;</br>
 
 ```jsx
 function Func() {
@@ -496,7 +496,7 @@ console.log(fInh.ex); //555
 https://learn.javascript.ru/class
 https://learn.javascript.ru/es-class
 
-class this is syntactic sugar in js, but with important additions, like: UseStrikt, [[IsClassConstructor]]: true, enumerable-false for all methods (metods don't see on for...in) ect.
+class this is syntactic sugar in js, but with important additions, like: UseStrikt, [[IsClassConstructor]]: true, enumerable-false for all methods (metods don't see on for...in) ect.</br>
 class in js haven't Privat && Protected props
 
 ```jsx
@@ -632,10 +632,10 @@ https://learn.javascript.ru/promise-basics
 https://learn.javascript.ru/promise-chaining
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise?retiredLocale=uk
 
-The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
-Function in Promise - Executor. Argument of Executor - buildin in JS functions Resolve && Reject (will inwoke in Executor)
-Resolve || Reject can only be called once (all next calls will be ignored). Reject always need to call with Error argument.
-Functions consumers - function who will call as result complete execute asynchronus operation. This functionConsumers are used by means of metods: then, cath. finally.
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</br>
+Function in Promise - Executor. Argument of Executor - buildin in JS functions Resolve && Reject (will inwoke in Executor)</br>
+Resolve || Reject can only be called once (all next calls will be ignored). Reject always need to call with Error argument.</br>
+Functions consumers - function who will call as result complete execute asynchronus operation. This functionConsumers are used by means of metods: then, cath. finally.</br>
 
 ```jsx
 let mode = true;
@@ -693,7 +693,7 @@ new Promise(function (resolve, reject) {
 
 https://learn.javascript.ru/async-await
 
-AsyncAwait - sintaxis for work with promises.
+AsyncAwait - sintaxis for work with promises.</br>
 Async function always return promise. As default (Resolve promise):
 
 ```jsx
