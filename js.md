@@ -173,7 +173,7 @@ https://learn.javascript.ru/types
    const a = [1, 2, 3, 4];
    const b = a;
    b.push(44);
-   console.log(`a=${a},    b=${b}`);
+   console.log(`a=${a},    b=${b}`); //a=1,2,3,4,44,    b=1,2,3,4,44
    ```
 
 ## TypeConversion
