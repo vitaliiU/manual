@@ -624,9 +624,9 @@ https://learn.javascript.ru/promise-basics
 https://learn.javascript.ru/promise-chaining
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise?retiredLocale=uk
 
-The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
-Function in Promise - Executor. Argument of Executor - buildin in JS functions Resolve && Reject (will inwoke in Executor)
-Resolve || Reject can only be called once (all next calls will be ignored). Reject always need to call with Error argument.
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</br>  
+Function in Promise - Executor. Argument of Executor - buildin in JS functions Resolve && Reject (will inwoke in Executor)</br>  
+Resolve || Reject can only be called once (all next calls will be ignored). Reject always need to call with Error argument.</br>  
 Functions consumers - function who will call as result complete execute asynchronus operation. This functionConsumers are used by means of metods: then, cath. finally.
 
 ```jsx
