@@ -70,8 +70,8 @@ attributes async && defer
 
 ```jsx
 <body>
-  <script defer src="script.js"></script> #run script after full download page
-  <script async src="script2.js"></script> #run script async
+  <script defer src="script.js"></script> //run script after full download page
+  <script async src="script2.js"></script> //run script async
 </body>
 ```
 
