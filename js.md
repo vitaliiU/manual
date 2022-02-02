@@ -49,7 +49,7 @@
 
 ## Genera_info
 
-JS - java script - ECMAScript (European Computer Manufacturers Association) - standart. last: ES2021
+JS - java script - ECMAScript (European Computer Manufacturers Association) - standart. 
 
 ## Inclusion_attributes
 
@@ -85,8 +85,8 @@ JS has 2 area of visibility: global scope и function scope
 
 ### Variables_Var:
 
-#available inside the function (in which it is declared) and in nested functions:
-#var return "undefined" if it call till get value or declaration:
+available inside the function (in which it is declared) and in nested functions:</br>
+var return "undefined" if it call till get value or declaration:
 
 ```jsx
 var declaration;
@@ -109,8 +109,8 @@ var x = 2;
 
 ### Variables_Let:
 
-#available inside the block (all betveen {}) (in which it is declared) and in nested functions and block{}:
-#let return ReferenceError if it call till declaration && return undefined if it call till get value:
+available inside the block (all betveen {}) (in which it is declared) and in nested functions and block{}.</br>
+let return ReferenceError if it call till declaration && return undefined if it call till get value:
 
 ```jsx
 console.log(x);
@@ -121,8 +121,8 @@ console.log(x2); //undefined
 
 ### Variables_Const:
 
-#the same as let, diferent - const value can't reset (for type-value), but can reset field or array element for type-reference (object, array)
-#const should always be used, except when it need to reset (use let)
+the same as let, diferent - const value can't reset (for type-value), but can reset field or array element for type-reference (object, array)</br>
+const should always be used, except when it need to reset (use let)
 
 ```jsx
 const x = "wwwww";
@@ -144,11 +144,11 @@ console.log(x); // ❌TypeError:invalid assignment to const 'x'
 
 https://learn.javascript.ru/types
 
-type-value:
-• number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN())
-const bigInt = 1234567890123456789012345678901234567890n;
-typeof number //number
-• bigint //const bigInt = 1234567890123456789012345678901234567890n;
+type-value:</br>
+• number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN())</br>
+const bigInt = 1234567890123456789012345678901234567890n;</br>
+typeof number //number</br>
+• bigint //const bigInt = 1234567890123456789012345678901234567890n;</br>
 typeof bigInt; //"bigint"
 • string
 typeof string //string
