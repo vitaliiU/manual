@@ -144,29 +144,29 @@ https://learn.javascript.ru/types
 
 #### type-value:
 
-1. number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN()) 
+1. number //4, 4.32, Infinity, NaN (NaN is calculate Error, NaN != Nan, for check - isNaN()) ;
    typeof number //number</br>
 2. bigint //const bigInt = 1234567890123456789012345678901234567890n;
    typeof bigInt; //"bigint"</br>  
-3. string
+3. string;
    typeof string //string</br>  
-4. boolean
+4. boolean;
    typeof boolean //boolean</br>  
-5. undefined 
+5. undefined ;
    typeof undefined //undefined</br>  
-6. null
+6. null;
    typeof null //object !!!!!! bug - must be null</br>  
-7. symbol
+7. symbol;
    const sym = Symbol("foo");
    typeof sym; // "symbol"</br>  
 
 #### type-reference:
 
-1. array
+1. array;
    typeof array //object !!!!!!!!!!!!!
-2. function
+2. function;
    typeof function //function
-3. object
+3. object;
    typeof object //object
 
 ## TypeConversion
