@@ -437,17 +437,17 @@ setTimeout(book.showInfo.bind(bookCall, "SomeArgument"), 1000);
 
 ## ProtoPrototype
 
-JS - prototype inheritance language.
-All function (declaration, expression (not arrow!!)) have propertie "prototype" (Func.prototype = { constructor: function Func() }; //as default).
-All object have object-prototype (template from which the object inherits all properties and methods ); this object-prototype can have own object-prototype ect.... (сhane of prototype).
-Object-prototype (in object) create from function.prototype (propertie function) when doing <const f = new Func();>. After object-prototype and function.prototype independent from each other
-we can get function.prototype by means of Func.prototype properties. We can get access to object-prototype by means of \_\_proto\_\_ (deprecated getter/setter for object-prototype) or Object.getPrototypeOf(obj)/Object.setPrototypeOf(obj, prototype)
+JS - prototype inheritance language.</br>  
+All function (declaration, expression (not arrow!!)) have propertie "prototype" (Func.prototype = { constructor: function Func() }; //as default).</br>  
+All object have object-prototype (template from which the object inherits all properties and methods ); this object-prototype can have own object-prototype ect.... (сhane of prototype).</br>  
+Object-prototype (in object) create from function.prototype (propertie function) when doing <const f = new Func();>. After object-prototype and function.prototype independent from each other</br>  
+we can get function.prototype by means of Func.prototype properties. We can get access to object-prototype by means of \_\_proto\_\_ (deprecated getter/setter for object-prototype) or Object.getPrototypeOf(obj)/Object.setPrototypeOf(obj, prototype)</br>  
 
-https://learn.javascript.ru/function-prototype //function prototype f.prototype
-https://learn.javascript.ru/prototype-inheritance //object prototype [[prototype]]
-https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/Object_prototypes
+https://learn.javascript.ru/function-prototype //function prototype f.prototype</br>  
+https://learn.javascript.ru/prototype-inheritance //object prototype [[prototype]]</br>  
+https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/Object_prototypes</br>  
 
-All function have propertie "prototype" = as default { constructor: nameFunction } who refer on function-constructor;
+All function have propertie "prototype" = as default { constructor: nameFunction } who refer on function-constructor;</br>  
 
 ```jsx
 function Func() {
