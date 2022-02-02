@@ -49,7 +49,7 @@
 
 ## Genera_info
 
-JS - java script - ECMAScript (European Computer Manufacturers Association) - standart. last: ES2021
+JS - java script - ECMAScript (European Computer Manufacturers Association) - standart. 
 
 ## Inclusion_attributes
 
