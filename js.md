@@ -168,6 +168,13 @@ https://learn.javascript.ru/types
    typeof function //function
 3. object;
    typeof object //object
+   
+     ```jsx
+   const a = [1, 2, 3, 4];
+   const b = a;
+   b.push(44);
+   console.log(`a=${a},    b=${b}`);
+   ```
 
 ## TypeConversion
 
