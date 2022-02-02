@@ -150,14 +150,14 @@ https://learn.javascript.ru/types
    typeof bigInt; //"bigint"</br>  
 3. string
    typeof string //string</br>  
-4. boolean</br>  
+4. boolean
    typeof boolean //boolean</br>  
 5. undefined 
    typeof undefined //undefined</br>  
 6. null
    typeof null //object !!!!!! bug - must be null</br>  
 7. symbol
-   const sym = Symbol("foo");</br>  
+   const sym = Symbol("foo");
    typeof sym; // "symbol"</br>  
 
 #### type-reference:
