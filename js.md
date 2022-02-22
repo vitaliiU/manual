@@ -2,59 +2,62 @@
 
 ## Content
 
-- [General info](##Genera_info)
+- [General info](#Genera_info)
 
-- [Inclusion attributes](##Inclusion_attributes)
+- [Inclusion attributes](#Inclusion_attributes)
 
-- [Variables](##Variables)
-- [Variables_Var](###Variables_Var)
-- [Variables_Let](###Variables_Let)
-- [Variables_Const](###Variables_Const)
+- [Variables](#Variables)
+- [Variables_Var](#Variables_Var)
+- [Variables_Let](#Variables_Let)
+- [Variables_Const](#Variables_Const)
 
-- [DataType](##DataType)
+- [DataType](#DataType)
 
-- [TypeConversion](##TypeConversion)
+- [TypeConversion](#TypeConversion)
 
-- [Function](##Function)
-- [Function_Declaration](###Function_Declaration)
-- [Function_Expression](###Function_Expression)
-- [Function_Anonim](###Function_Anonim)
-- [Function_Generator](###Function_Generator)
-- [Function_Arrow](###Function_Arrow)
-- [Function_Closures](###Function_Closures)
+- [StatementCicles](#StatementCicles)
 
-- [StrictMode](##StrictMode)
-- [CallApply](##CallApply)
-- [Arguments](##Arguments)
+- [Function](#Function)
+- [Function_Declaration](#Function_Declaration)
+- [Function_Expression](#Function_Expression)
+- [Function_Anonim](#Function_Anonim)
+- [Function_Generator](#Function_Generator)
+- [Function_Arrow](#Function_Arrow)
+- [Function_Closures](#Function_Closures)
+- [MemoizationCaching](#MemoizationCaching)
 
-- [Array](##Array)
+- [StrictMode](#StrictMode)
+- [CallApplyBind](#CallApplyBind)
+- [Arguments](#Arguments)
 
-- [SpreadSintaxis](##SpreadSintaxis)
+- [Array](#Array)
+- [ForEach_Map_Filter](#ForEach_Map_Filter)
+- [SpreadSintaxis](#SpreadSintaxis)
 
-- [Object](##Object)
-- [ObjectDefine](###ObjectDefine)
-- [ObjectPropertiesFunction](###ObjectPropertiesFunction)
-- [ObjectCopyNew](###ObjectCopyNew)
-- [ObjectCallApplyBind](###ObjectCallApplyBind)
+- [Object](#Object)
+- [ObjectDefine](#ObjectDefine)
+- [ObjectProperties](#ObjectProperties)
+- [ObjectCopyNew](#ObjectCopyNew)
+- [ObjectCallApplyBind](#ObjectCallApplyBind)
 
-- [ProtoPrototype](###ProtoPrototype)
+- [ProtoPrototype](#ProtoPrototype)
 
-- [Class](##Class)
+- [Class](#Class)
 
-- [CallBack](##CallBack)
+- [CallBack](#CallBack)
 
-- [Promise](##Promise)
+- [Promise](#Promise)
 
-- [AsyncAwait](##AsyncAwait)
+- [AsyncAwait](#AsyncAwait)
 
 ## Genera_info
 
-JS - java script - ECMAScript (European Computer Manufacturers Association) - standart. 
+JS - java script - ECMAScript (European Computer Manufacturers Association) - standart.
 
 ## Inclusion_attributes
 
-as rule script include on end Body</br>
-scripts are executed in order
+As rule script include on end Body. </br>
+Scripts are executed in order
 
 ```jsx
 <body>
@@ -66,7 +69,7 @@ scripts are executed in order
 </body>
 ```
 
-attributes async && defer
+Attributes async && defer
 
 ```jsx
 <body>
@@ -75,18 +78,30 @@ attributes async && defer
 </body>
 ```
 
+We can use Module export/import
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Modules
+
+!!New browsers all will GET ERROR (CORS) and won't execute JS script, if we will try launch browser as local (right click on index.html). We can use it only by launch a server (local server).
+
+```jsx
+<script type="module" src="./js/index.js" defer></script> //type="module" - is needed!
+```
+
 ## Variables
 
 https://medium.com/nuances-of-programming/%D0%B2-%D1%87%D1%91%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-var-let-%D0%B8-const-%D0%B2-javascript-3084bfe9f7a3
 
 <h2>var, let, const</h2>
 
-JS has 2 area of visibility: global scope и function scope
+JS has 3 area of visibility: global scope, function scope, block scope (all betveen {}). </br>
+
+2 area of visibility for var: global scope и function scope </br>
+3 area of visibility for let, const: global scope, function scope, block scope.
 
 ### Variables_Var:
 
-available inside the function (in which it is declared) and in nested functions:</br>
-var return "undefined" if it call till get value or declaration:
+Available inside Global Scope and in the function (in which it is declared) and in nested functions (function scope). </br>
+Var return "undefined" if it call till get value or declaration:
 
 ```jsx
 var declaration;
@@ -109,7 +124,7 @@ var x = 2;
 
 ### Variables_Let:
 
-available inside the block (all betveen {}) (in which it is declared) and in nested functions and block{}.</br>
+Available inside Global Scope and in the function (in which it is declared) and in nested functions (function scope). Also available inside the block scope (all betveen {}) (in which it is declared) and in nested functions and block{}.</br>
 let return ReferenceError if it call till declaration && return undefined if it call till get value:
 
 ```jsx
@@ -121,7 +136,7 @@ console.log(x2); //undefined
 
 ### Variables_Const:
 
-the same as let, diferent - const value can't reset (for type-value), but can reset field or array element for type-reference (object, array)</br>
+The same as let, diferent - const value can't reset (for type-value), but can reset field or array element for type-reference (object, array)</br>
 const should always be used, except when it need to reset (use let)
 
 ```jsx
@@ -169,12 +184,18 @@ typeof function //function</br>
 • object</br>
 typeof object //object</br>
 
-  ```jsx
-   const a = [1, 2, 3, 4];
-   const b = a;
-   b.push(44);
-   console.log(`a=${a},    b=${b}`);
-   ```
+```jsx
+//type-value - we have different instances and i let a and in let b:
+let a = 5;
+let b = a;
+b += 2;
+console.log(`a=${a},    b=${b}`); //a=5,    b=7
+//type-reference - we have the same object and in const a and in const b:
+const a = [1, 2, 3, 4];
+const b = a;
+b.push(44);
+console.log(`a=${a},    b=${b}`); //a=1,2,3,4,44,    b=1,2,3,4,44
+```
 
 ## TypeConversion
 
@@ -196,6 +217,156 @@ typeof object //object</br>
 - operands if, else, switch
 - logical operators (||, &&,!), logical negation !!
 - Boolean(value)
+
+## StatementCicles
+
+- [if_else_and_conditional_ternary_operator](#if_else_and_conditional_ternary_operator)
+- [switch_operator](#switch_operator)
+- [for_statement](#for_statement)
+- [do_while_statement](#do_while_statement)
+- [while_statement](#while_statement)
+- [for_in_statement](#for_in_statement)
+- [for_of_statement](#for_of_statement)
+
+### if_else_and_conditional_ternary_operator
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else?retiredLocale=uk </br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator?retiredLocale=uk </br>
+
+The if statement executes a statement if a specified condition is truthy. If the condition is falsy, another statement can be executed. </br>
+
+```jsx
+//use if...else if...else
+const x = 5;
+if (x >= 0 && x < 4) {
+  console.log(`x = ${x}, this value >= 0 && < 4`);
+} else if (x >= 4 && x < 25) {
+  console.log(`x = ${x}, this value >= 4 && < 25`); //x = 5, this value >= 4 && < 25
+} else {
+  console.log(`x = ${x}, this value >= 25`);
+}
+//conditional (ternary) operator (not necomemd to use!!) as difficult for understand in long code:
+const age = 26;
+let beverage = age >= 21 ? "Beer" : "Juice";
+console.log(`For age ${age} yers old, your favorite beverage is ${beverage}`); // For age 26 yers old, your favorite beverage is Beer
+```
+
+### switch_operator
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch </br>
+
+The switch statement evaluates an expression, matching the expression's value to a case clause, and executes statements associated with that case, as well as statements in cases that follow the matching case.
+
+```jsx
+const action = "say_hello";
+switch (action) {
+  case "say_hello":
+    let messageHello = "hello";
+    console.log(messageHello);
+    break;
+  case "say_hi":
+    let messageHi = "hi";
+    console.log(messageHi);
+    break;
+  default:
+    console.log("no action.");
+    break;
+}
+```
+
+### Loops_and_iteration
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration?retiredLocale=uk </br>
+
+#### for_statement
+
+A for loop repeats until a specified condition evaluates to false. The JavaScript for loop is similar to the Java and C for loop. Array.prototype.forEach() should be preferred and "for" only used when necessary.
+
+```jsx
+const arr = ["one", "two", "three", "four", "five"];
+for (let i = 0; i < arr.length; i++) {
+  console.log(`${i} element of array is ${arr[i]}`);
+} // 0 element of array is one
+// 1 element of array is two
+// 2 element of array is three
+// 3 element of array is four
+// 4 element of array is five
+```
+
+We can use "break statement" and "continue statement" in loop "for". Also if we have multiple levels of nesting loop - in this case we cant use "labeled statement" for diferentiation - what loop we must break (continue).
+
+#### do_while_statement
+
+The do...while statement repeats until a specified condition evaluates to false. !! One time the body of the loop do...while will be executed anyway.
+
+```jsx
+let i = 0;
+do {
+  i += 1;
+  console.log(i);
+} while (i < 0); //1 !!
+
+let i = 0;
+do {
+  i += 1;
+  console.log(i);
+} while (i < 5); //1 2 3 4 5
+```
+
+We can use "break statement" and "continue statement" in loop "do...while". Also if we have multiple levels of nesting loop - in this case we cant use "labeled statement" for diferentiation - what loop we must break (continue).
+
+#### while_statement
+
+A while statement executes its statements as long as a specified condition evaluates to true.
+
+```jsx
+let n = 0;
+while (n < 0) {
+  console.log(n); //undefined !! loop not working
+  n++;
+}
+
+let n = 0;
+while (n < 5) {
+  console.log(n); //0 1 2 3 4
+  n++;
+}
+```
+
+We can use "break statement" and "continue statement" in loop "while". Also if we have multiple levels of nesting loop - in this case we cant use "labeled statement" for diferentiation - what loop we must break (continue).
+
+#### for_in_statement
+
+The for...in statement iterates a specified variable over all the enumerable properties of an object. For each distinct property, JavaScript executes the specified statements. (see objects)
+
+```jsx
+const book = {
+  autor: "Garyson",
+  name: "StanleSteelRat",
+  yearRelease: 1988,
+};
+for (const property in book) {
+  console.log(`${property}: ${book[property]}`);
+}
+// autor: Garyson
+// name: StanleSteelRat
+// yearRelease: 1988
+```
+
+We can use "break statement" and "continue statement" in for...in statement.
+
+#### for_of_statement
+
+The for...of statement creates a loop Iterating over iterable objects (including Array, Map, Set, arguments object and so on), invoking a custom iteration hook with statements to be executed for the value of each distinct property.
+
+```jsx
+const arr = [3, 5, 7];
+for (let i of arr) {
+  console.log(i); // logs 3, 5, 7
+}
+```
+
+We can use "break statement" and "continue statement" in for...of statement.
 
 ## Function
 
@@ -260,7 +431,7 @@ function* generator() {
 function - always anonim function (without name) not have own "this", "arguments", "super", "new.target"
 use outer "this". Can't creat objects from arrow functions.
 
-https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions </br>
 
 ```jsx
 // short syntax
@@ -287,9 +458,10 @@ elements.map((element) => element.length);
 
 ### Function_Closures
 
-https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions#%D0%B7%D0%B0%D0%BC%D1%8B%D0%BA%D0%B0%D0%BD%D0%B8%D1%8F
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions#%D0%B7%D0%B0%D0%BC%D1%8B%D0%BA%D0%B0%D0%BD%D0%B8%D1%8F </br>
 
 ```jsx
+//first case
 var pet = function (name) {
   var getName = function () {
     return name;
@@ -298,6 +470,70 @@ var pet = function (name) {
 };
 myPet = pet("Vivie");
 myPet(); //will return Vivie
+
+//second case
+const out = function (count) {
+  const ob = {};
+  const inn = function () {
+    //check is object empty
+    if (Object.keys(ob).length === 0) {
+      for (let i = 1; i < count; i++) {
+        console.log(`${i} call in empty object`);
+        ob[i] = i;
+      }
+    } else {
+      let countN = Object.keys(ob).length + count;
+      for (let i = count; i < countN; i++) {
+        console.log(`${i} call in filled object`);
+        ob[i] = i;
+      }
+    }
+    console.log(ob);
+  };
+  return inn;
+};
+const ex = out(5);
+ex(); //Object { 1: 1, 2: 2, 3: 3, 4: 4 }
+ex(); //Object { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8 }
+const exX = out(7);
+exX(); //Object { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 }
+```
+
+### MemoizationCaching
+
+https://habr.com/ru/company/ruvds/blog/332384/ </br>
+
+Cache - is an intermediate buffer with fast access to it, containing information that can be requested with the highest probability. Accessing data in the cache is faster than fetching the original data from slower memory or a remote source, but its volume is significantly limited compared to the source data store. </br>
+
+Memoization - is an optimization method that is mainly used to speed up computer programs by storing the results of expensive function calls and returning the cached result when calls on the same input data occur again . </br>
+
+```jsx
+//this is memoised function
+const sample = (x) => {
+  let res = x + 5;
+  console.log(`result = ${res}`);
+  return x + 5;
+};
+//this is memisation function, we will dispatch memoised function as parameter
+const memo = (fn) => {
+  cash = {};
+  return (...args) => {
+    let v = args[0];
+    if (v in cash) {
+      console.log(`result from cashe = ${cash[v]}`);
+      return cash[v];
+    } else {
+      console.log("result from calculating");
+      let result = fn(v);
+      cash[v] = result;
+      return result;
+    }
+  };
+};
+const ex = memo(sample);
+ex(5); //result from calculating  result = 10
+ex(7); //result from calculating  result = 12
+ex(5); //result from cashe = 10
 ```
 
 ## StrictMode
@@ -341,26 +577,147 @@ let matrix = [
 alert(matrix[1][1]); // 5
 
 //define dinamic multi matrix
-const matrixRandom=[];
-for(let i=0;i<sizeMatrix;i++){
-    matrixRandom[i]=[];
+const matrixRandom = [];
+for (let i = 0; i < sizeMatrix; i++) {
+  matrixRandom[i] = [];
 }
-}
+
+//copy array
+var arr = [1, 2, 3];
+var arr2 = [...arr]; // like arr.slice()
+arr2.push(4);
+// arr2 becomes [1, 2, 3, 4]
+// arr remains unaffected
 ```
 
-When to Use Arrays. When to use Objects.
+When to Use Arrays. When to use Objects. </br>
 
 JavaScript does not support associative arrays.
 You should use objects when you want the element names to be strings (text).
 You should use arrays when you want the element names to be numbers.
 
+## ForEach_Map_Filter
+
+### forEach
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach </br>
+
+The forEach() method executes a provided function once for each array element.
+
+```jsx
+const arr = ["a", "b", "c", "d"];
+arr.forEach((element) => console.log(element)); //a b c d
+
+const arr = ["a", "b", "c", "d"];
+arr.forEach((element, index) =>
+  console.log(`${index} array element is ${element}`)
+); //0 array element is a
+//1 array element is b
+//2 array element is c
+//3 array element is d
+```
+
+### map
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map?retiredLocale=uk </br>
+
+The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
+
+```jsx
+const arr = [1, 3, 5, 8];
+const newArr = arr.map((x) => x * 4);
+console.log(newArr); //Array(4) [ 4, 12, 20, 32 ]
+```
+
+### filter
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter?retiredLocale=uk </br>
+
+The filter() method creates a new array with all elements that pass the test implemented by the provided function. Diferent between filter() vs map() - filter() don't create new elements (just select needed elements); map create new elements.
+
+```jsx
+const arr = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+const result = arr.filter((word) => word.length > 6);
+console.log(result); //Array(3) [ "exuberant", "destruction", "present" ]
+
+//also we can dispatsh to callback as paremeters: index of current element && fully current array
+
+//dispatch callback to filter
+function isBigEnough(value) {
+  return value >= 10;
+}
+const filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+console.log(filtered); //Array(3) [ 12, 130, 44 ]
+
+//returns all prime numbers in an array:
+const array = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+function isPrime(num) {
+  for (let i = 2; num > i; i++) {
+    if (num % i == 0) {
+      return false;
+    }
+  }
+  return num > 1;
+}
+console.log(array.filter(isPrime)); // [2, 3, 5, 7, 11]
+
+//we can change our source array in callbackFilter - in this case filter will work with new values:
+let words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+const modifiedWords = words.filter((word, index, arr) => {
+  arr[index + 1] += " extra";
+  return word.length < 6;
+});
+console.log(modifiedWords); //Array [ "spray" ]
+
+//when we will add new arrayElement in callbackFilter - filter don't see it:
+words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+const appendedWords = words.filter((word, index, arr) => {
+  arr.push("new");
+  return word.length < 6;
+});
+console.log(appendedWords); //Array(3) [ "spray", "limit", "elite" ]
+console.log(words); //Array(12) [ "spray", "limit", "exuberant", "destruction", "elite", "present", "new", "new", "new", "new", … ]
+
+//when we will delete arrayElements in callbackFilter - filter won't see deleted elements:
+words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+const deleteWords = words.filter((word, index, arr) => {
+  arr.pop();
+  return word.length < 6;
+});
+console.log(deleteWords); //Array [ "spray", "limit" ]
+```
+
 ## SpreadSintaxis
 
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 
+```jsx
+function sum(x, y, z) {
+  return x + y + z;
+}
+const numbers = [1, 2, 3];
+//we use spread when we want use array element as several funstion argument
+console.log(sum(...numbers));
+// expected output: 6
+//classic we use next sintaxis for that
+console.log(sum.apply(null, numbers));
+// expected output: 6
+```
+
+also we can use spread sintaxis for copi array
+
+```jsx
+var arr = [1, 2, 3];
+var arr2 = [...arr]; // like arr.slice()
+arr2.push(4);
+// arr2 becomes [1, 2, 3, 4]
+// arr remains unaffected
+```
+
 ## Object
 
-Object is a reference type. Can use for: 1. Save data as Key: Value. 2. OOP
+Object is a reference type. Can use for: 1. Save data as Key: Value. 2. OOP </br>
+Object have a properties. A property is a "key: value" pair, where the key is a string (also called a "property name"), and the value can be anything.
 
 ### ObjectDefine
 
@@ -402,17 +759,35 @@ const book = {
 };
 ```
 
-### ObjectPropertiesFunction
+### ObjectProperties
 
 ```jsx
+const book = {
+  autor: "Garyson",
+  name: "StanleSteelRat",
+  yearRelease: 1988,
+  showInfo: function (arg) {
+    console.log(this.name);
+  },
+};
+
 const prop = "autor";
 console.log(book[prop]);
 console.log(book["autor"]);
 console.log(book.autor);
 book.showInfo("argument");
 
+//use for...in for object properties
 for (const property in book) {
   console.log(`${property}: ${book[property]}`);
+}
+
+//check if properties is
+const prop = "name";
+if (prop in book) {
+  console.log(`object book have propertie ${prop}`);
+} else {
+  console.log(`object book don't have propertie ${prop}`);
 }
 ```
 
