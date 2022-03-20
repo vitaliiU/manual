@@ -825,13 +825,13 @@ https://medium.com/webbdev/js-a4a9dfed9782</br>
 
 An execution context is, to put it simply, a concept that describes the environment in which JavaScript code is executed. Code is always executed within some context. </br>
 
-ETENTION!!! In JS any function DON'T HAVE OWN 'THIS'!! 'This' in function (declaration, expression, arrow) mean as function will execute inside environment some object (that mean - our function will use variables from some oblect). There is different between funstion declaration (expretion) and arrow function, when we use "this":</br>
+ATTENTION!!! In JS any function DON'T HAVE OWN 'THIS'!! 'This' in function (declaration, expression, arrow) mean as function will execute inside environment some object (that mean - our function will use variables from some oblect). There is different between funstion declaration (expretion) and arrow function, when we use "this":</br>
 
 1. For function declaration (expression) "this" use environment, where function was be CREATED!!. We can change context function declaration (expression) by use Call, Apply, Bind.</br>
 2. For arrow function "this" use environment, where function was be EXECUTED (RUN)!! Not created!!. We can't change context arrow function by use Call, Apply, Bind.</br>
    See example below (function context). </br>
 
-ETENTION!! in JS in Global context, deprecated "var x" the same as "this.x". New "let" && "const" - NO!!!! In Function context - "var x" isn't the same as "this.x"!!!
+ATTENTION!! in JS in Global context, deprecated "var x" the same as "this.x". New "let" && "const" - NO!!!! In Function context - "var x" isn't the same as "this.x"!!!
 
 ```jsx
 //global context
