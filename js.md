@@ -979,6 +979,10 @@ const fn = obj.b;
 console.log(fn()()); // global
 ```
 
+3. Eval function execution context
+
+Eval function execution context. Code running inside the eval function also has its own execution context. However, the eval function is rarely used, so we won't talk about this execution context here.
+
 ## ProtoPrototype
 
 JS - prototype inheritance language</br>
