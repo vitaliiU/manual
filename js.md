@@ -39,6 +39,7 @@
 - [ObjectProperties](#ObjectProperties)
 - [ObjectCopyNew](#ObjectCopyNew)
 - [ObjectCallApplyBind](#ObjectCallApplyBind)
+- [Context](#Context)
 
 - [ProtoPrototype](#ProtoPrototype)
 
@@ -428,8 +429,7 @@ function* generator() {
 
 ### Function_Arrow
 
-function - always anonim function (without name) not have own "this", "arguments", "super", "new.target"
-use outer "this". Can't creat objects from arrow functions.
+function - always anonim function (without name) not have own "arguments", "super", "new.target". Can't creat objects from arrow functions. "This" for arrow function always bind to envirement, where arrow function was be executed!!! (not created!!) We can't reset "this" for arrow function by use Call, Apply, Bind (as opposed to a function declaration or expression) (for more information see below - Context).
 
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions </br>
 
@@ -816,6 +816,167 @@ book.showInfo.applay(bookCall, ["SomeArgument"]);
 
 //bind
 setTimeout(book.showInfo.bind(bookCall, "SomeArgument"), 1000);
+```
+
+## Context
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/this</br>
+https://medium.com/webbdev/js-a4a9dfed9782</br>
+
+An execution context is, to put it simply, a concept that describes the environment in which JavaScript code is executed. Code is always executed within some context. </br>
+
+ETENTION!!! In JS any function DON'T HAVE OWN 'THIS'!! 'This' in function (declaration, expression, arrow) mean as function will execute inside environment some object (that mean - our function will use variables from some oblect). There is different between funstion declaration (expretion) and arrow function, when we use "this":</br>
+
+1. For function declaration (expression) "this" use environment, where function was be CREATED!!. We can change context function declaration (expression) by use Call, Apply, Bind.</br>
+2. For arrow function "this" use environment, where function was be EXECUTED (RUN)!! Not created!!. We can't change context arrow function by use Call, Apply, Bind.</br>
+   See example below (function context). </br>
+
+ETENTION!! in JS in Global context, deprecated "var x" the same as "this.x". New "let" && "const" - NO!!!! In Function context - "var x" isn't the same as "this.x"!!!
+
+```jsx
+//global context
+this.a = "a";
+var b = "b";
+let c = "c";
+let d = "d";
+console.log(this.a); //a
+console.log(this.b); //b
+console.log(this.c); //undefined
+console.log(this.d); //undefined
+
+//function context
+this.v = 77777; //the same as var v
+console.log(this.v); //77777 in global context
+function context() {
+  var v = 55555; //we haven't changed this.v in global context
+  console.log(this); //Window
+  console.log(this.v); //77777
+}
+context();
+console.log(this.v); //77777 in global context
+```
+
+In JS we have 3 possible contexts:</br>
+
+1. Global context (in browser Global context is object Window)
+
+```jsx
+console.log(this); //Window
+console.log(this === window); // true
+a = 37;
+console.log(window.a); // 37
+this.b = "MDN";
+console.log(window.b); // "MDN"
+console.log(b); // "MDN"
+```
+
+2. Function context:
+
+```jsx
+//next case for function declaration IN NO STRICT regime, we have this=Window inside function context (function isn't object!!!!), this.v=77777 (global context) we will change inside function - this.v = 55555.... so is the same value!!
+this.v = 77777;
+console.log(this.v); //77777 in global context
+function context() {
+  this.v = 55555; //we have changed this.v in global context
+  console.log(this); //Window
+  console.log(this.v); //55555
+}
+context();
+console.log(this.v); //55555 in global context
+
+//in strict mode 'this' inside function is undefined (because function don't bind to any object!)
+this.v = 77777;
+console.log(this.v); //77777 in global context
+function context() {
+  "use strict";
+  this.v = 55555; //Error - 'this' is undefined
+  console.log(this);
+  console.log(this.v);
+}
+context();
+console.log(this.v);
+
+//for arrow function "use strict" is working right, because arrow function always have 'this' of environment when it be created:
+this.v = 77777;
+console.log(this.v); //77777 in global context
+const context = () => {
+  "use strict";
+  this.v = 55555; //we have changed this.v in global comtext
+  console.log(this); //Window
+  console.log(this.v); //55555
+};
+context();
+console.log(this.v); //55555 in global context
+
+//we can change "this" for function declaretion (expression) by use Call, Apply, Bind:
+const obj = { a: "Custom" };
+this.a = "Global";
+function whatsThis() {
+  console.log(this.a);
+}
+whatsThis(); // 'Global'
+whatsThis.call(obj); // 'Custom'
+whatsThis.apply(obj); // 'Custom'
+
+//we can't change "this" for arrow function by use Call, Apply, Bind:
+const obj = { a: "Custom" };
+var a = "Global";
+const whatsThis = () => {
+  console.log(this.a);
+};
+whatsThis(); // 'Global'
+whatsThis.call(obj); // 'Global' - we EXECUTE arrow function in global context
+whatsThis.apply(obj); // 'Global' - we EXECUTE arrow function in global context
+
+//if in object where was be created our function missing needed this.value - in that case value will be undefined!
+this.a = "global";
+const obj = {
+  a: "Custom",
+  b: function () {
+    console.log(this.a);
+  },
+};
+obj.b(); //Custom
+
+this.a = "global";
+const obj = {
+  b: function () {
+    console.log(this.a);
+  },
+};
+obj.b(); //undefined
+
+this.a = "global";
+const obj = {
+  a: "Custom",
+  b: function () {
+    const x = () => this.a; //context arrow function - its envirement - function expression inside object obj.
+    return x;
+  },
+};
+const fn = obj.b();
+console.log(fn()); // Custom
+
+this.a = "global";
+const obj = {
+  b: function () {
+    const x = () => this.a; //context arrow function - its envirement - function expression inside object obj.
+    return x;
+  },
+};
+const fn = obj.b();
+console.log(fn()); // undefined
+
+//be carefull!! if we just assign fn = obj.b; without Execute - we get other result!! - our function expression b will execute in global context:
+this.a = "global";
+const obj = {
+  b: function () {
+    const x = () => this.a; //context arrow function - its envirement - function expression inside object obj.
+    return x;
+  },
+};
+const fn = obj.b;
+console.log(fn()()); // global
 ```
 
 ## ProtoPrototype
