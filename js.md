@@ -838,7 +838,7 @@ ATTENTION!! in JS in Global context, deprecated "var x" the same as "this.x". Ne
 this.a = "a";
 var b = "b";
 let c = "c";
-let d = "d";
+const d = "d";
 console.log(this.a); //a
 console.log(this.b); //b
 console.log(this.c); //undefined
