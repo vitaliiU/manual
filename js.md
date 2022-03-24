@@ -896,7 +896,7 @@ function context() {
 context();
 console.log(this.v);
 
-//for arrow function "use strict" is working right, because arrow function always have 'this' of environment when it be created:
+//for arrow function "use strict" is working right, because arrow function always have 'this' of environment when it be executed (run):
 this.v = 77777;
 console.log(this.v); //77777 in global context
 const context = () => {
