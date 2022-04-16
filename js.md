@@ -1168,9 +1168,9 @@ loadScript("/my/script.js", function (error, script) {
 
 ## Promise
 
-https://learn.javascript.ru/promise-basics
-https://learn.javascript.ru/promise-chaining
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise?retiredLocale=uk
+https://learn.javascript.ru/promise-basics </br>
+https://learn.javascript.ru/promise-chaining </br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise?retiredLocale=uk </br>
 
 The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</br>
 Function in Promise - Executor. Argument of Executor - buildin in JS functions Resolve && Reject (will inwoke in Executor)</br>
