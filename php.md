@@ -8,6 +8,7 @@
 - [References](#References)
 - [RequireInclude](#RequireInclude)
 - [Function](#Function)
+- [Array](#Array)
 
 - [LARAVEL](#LARAVEL)
 - [Middleware](#Middleware)
@@ -338,9 +339,14 @@ https://www.php.net/manual/ru/function.include-once.php
 ## Function
 
 A function is a block of statements that can be reused in a program. </br>
+In this block we can use any valid PHP code (include other Function and Class) </br>
+Function in php have Global Scope (any function (made in any scope) can be call anywhere (unlike js where scope nested)) But online Compile don't do that!! so maybe this is not right.... or don't really right)</br>
+Variable scope don't nested in inner function (unlike js) see example below. For visible need use like: (function () use ($arg))</br>
 
 - [BuiltInFunction](#BuiltInFunction)
 - [CustomFunctions](#CustomFunctions)
+- [AnonimFunction](#AnonimFunction)
+- [Scope&&Argument](#Scope&&Argument)
 
 ### BuiltInFunction
 
@@ -353,7 +359,7 @@ or user-defined functions </br>
 https://www.php.net/manual/ru/functions.user-defined.php
 
 ```php
-// defining as function (function declaration)
+// defining as function (function declaration in js)
 hello(); //Hello World!
 function hello()
 {
@@ -361,7 +367,7 @@ echo "Hello World!";
 };
 hello(); //Hello World!
 
-//assigning an anonymous function to a variable (function expression)
+//assigning an anonymous function to a variable (function expression in js)
 $hello(); //ERROR
 $hello=function()
 {
@@ -380,12 +386,65 @@ function outer(){
 };
 outer();
 
-
 ```
 
 ### AnonimFunction
 
 https://www.php.net/manual/ru/functions.anonymous.php
+
+### Scope&&Argument
+
+```php
+//dispatch several arguments ($numberTwo as default = 25, $variable is variable amount 0f values)
+function sumFunction($numberOne, $numberTwo=25, ...$variable)
+{
+$sum = $numberOne + $numberTwo;
+echo $sum, " ";
+var_dump ($variable);
+}
+sumFunction(4,6); //10 array(0) { }
+sumFunction(4); //29 array(0) { }
+sumFunction(4,5,1,2,3,4); //9 array(4) { [0]=> int(1) [1]=> int(2) [2]=> int(3) [3]=> int(4) } 
+
+//in php scope we can't nested value in inner function. 
+//when we dispath type-value - type-value don't change (array in php also is type-value!).
+$outer=5;
+function innerF($argument)
+{
+echo $outer, " "; //_
+$argument++;
+echo $argument, " ";
+}
+innerF($outer); //6
+echo $outer;//5
+
+//we can't use outer variable by use "function () use ($arg)" in function-declaration
+$message = '44444';
+function example() use ($message) {
+    var_dump($message);
+};
+example(); //Parse error: syntax error, unexpected 'use'
+
+//we can use outer variable by use "function () use ($arg)" in function-expretion
+$message = '44444';
+$example = function () use ($message) {
+    var_dump($message);
+};
+$example(); //44444
+
+//we can dispatch parametr by reference:
+function addFive(&$number)
+{
+$number += 5;
+echo $number; //8
+}
+$test = 3;  
+addFive($test);
+echo $test;//8
+```
+
+
+## Array
 
 ## LARAVEL
 

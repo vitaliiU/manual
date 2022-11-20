@@ -196,6 +196,25 @@ const a = [1, 2, 3, 4];
 const b = a;
 b.push(44);
 console.log(`a=${a},    b=${b}`); //a=1,2,3,4,44,    b=1,2,3,4,44
+
+//when we dispatch as parametr type-value - type-value don't change
+let outer=4; 
+function w(inner) {
+  inner++; 
+  console.log(inner);//5
+  }; 
+  w(outer); 
+console.log(outer);//4
+
+//when we do the same with type-reference - type-reference will change
+let outer=[1, 2, 3, 4]; 
+function w(inner) {
+  inner.push(44);
+  console.log(inner);//Array(5) [ 1, 2, 3, 4, 44 ]
+  }; 
+  w(outer); 
+console.log(outer);//Array(5) [ 1, 2, 3, 4, 44 ]
+
 ```
 
 ## TypeConversion
