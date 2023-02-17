@@ -9,6 +9,7 @@
 - [RequireInclude](#RequireInclude)
 - [Function](#Function)
 - [Array](#Array)
+- [Class_Object](#Class_Object)
 
 - [LARAVEL](#LARAVEL)
 - [Middleware](#Middleware)
@@ -23,6 +24,7 @@ https://www.php.net/</br>
 
 online compile PHP</br>
 https://www.w3schools.com/php/phptryit.asp?filename=tryphp_compiler</br>
+https://onecompiler.com/php/3yq869cmt</br>
 
 ## PHPTags
 
@@ -346,7 +348,10 @@ Variable scope don't nested in inner function (unlike js) see example below. For
 - [BuiltInFunction](#BuiltInFunction)
 - [CustomFunctions](#CustomFunctions)
 - [AnonimFunction](#AnonimFunction)
+- [ArrowFunction](#ArrowFunction)
 - [Scope&&Argument](#Scope&&Argument)
+- [Closure](#Closure)
+- [MemoizationCaching](#MemoizationCaching)
 
 ### BuiltInFunction
 
@@ -392,6 +397,50 @@ outer();
 
 https://www.php.net/manual/ru/functions.anonymous.php
 
+Anonim function can be static. In this case they don't bind with object</br>
+```php
+class Foo
+{
+    function __construct()
+    {
+        $func = static function() {  //Error (undefined this). Without "static"- object(Foo)#1 (0) 
+            var_dump($this);
+        };
+        $func();
+    }
+};
+new Foo();
+```
+Anonim function may also inherit variables from the parent scope. Any such variables must be passed to the "use" language construct. This case also call in PHP "closure"</br>
+
+```php
+$message = 'hello';
+$example = function () use ($message) {
+    var_dump($message);
+};
+$example(); //string(5) "hello"
+```
+### ArrowFunction
+
+Arrow functions were introduced in PHP 7.4 as a more concise syntax for anonymous functions. </br>
+
+```php
+$y = 1; 
+$fn1 = fn($x) => $x + $y; //in arrow function outer $y is defined
+// equivalent to using $y by value:
+$fn2 = function ($x) use ($y) { //in anonim function outer $y isn't defined (need Use)
+    return $x + $y;
+};
+var_export($fn1(3)); //4
+
+//case nested arrow function
+$z = 1;
+$fn = fn($x) => fn($y) => $x * $y + $z;
+// Outputs 51
+var_export($fn(5)(10));
+
+```
+
 ### Scope&&Argument
 
 ```php
@@ -425,7 +474,7 @@ function example() use ($message) {
 };
 example(); //Parse error: syntax error, unexpected 'use'
 
-//we can use outer variable by use "function () use ($arg)" in function-expretion
+//we can use outer variable by use "function () use ($arg)" in function-expretion (anonim function)
 $message = '44444';
 $example = function () use ($message) {
     var_dump($message);
@@ -442,9 +491,148 @@ $test = 3;
 addFive($test);
 echo $test;//8
 ```
+### Closure
 
+The same when Anonim function use inherit variables from the parent scope by "use". See example above.
+
+
+### MemoizationCaching
+
+Cache - is an intermediate buffer with fast access to it, containing information that can be requested with the highest probability. Accessing data in the cache is faster than fetching the original data from slower memory or a remote source, but its volume is significantly limited compared to the source data store. </br>
+
+Memoization - is an optimization method that is mainly used to speed up computer programs by storing the results of expensive function calls and returning the cached result when calls on the same input data occur again . </br>
+
+```php
+function memoize($funcMem)
+{
+    return function () use ($funcMem) {
+        static $cache = [];
+
+        $args = func_get_args();
+        //$key = serialize($args); //nativeExampleStupid))
+        $key =$args[0];
+        $cached = true;
+
+        if (!isset($cache[$key])) {  //we can't use: $cache[$args[0]] without define: $key =$args[0]; May be BugPHP.
+            $cache[$key] = $funcMem(...$args);
+            $cached = false;
+        }
+
+        return ['result' => $cache[$key], 'cached' => $cached];
+    };
+}
+
+$memoizedAdd = memoize(
+    function ($num) {
+        return $num + 10;
+    }
+);
+
+var_dump($memoizedAdd(5));  
+var_dump($memoizedAdd(6));  
+var_dump($memoizedAdd(5));  
+```
 
 ## Array
+
+Array can store any type of data (numers, objects, etc.). ArrayIndex is Number and start from "0". </br>
+
+```php
+//there is several ways for create Arrays:
+$firstArray = array("PHP", "JavaScript", "HTML"); 
+
+$secondArray = array(  
+0 => "PHP",
+1 => "JavaScript",
+2 => "HTML"
+);
+
+$thirdArray = array();
+$thirdArray[0] = "PHP";
+$thirdArray[1] = "JavaScript";
+$thirdArray[2] = "HTML";
+
+$months = array(  //associative Array
+"march" => 31,
+"april" => 30,
+"may" => 31,
+"june" => 30
+);
+
+//most usefull:
+$test1=[1,2,3,4];
+
+$test2=[];
+$test2[0]=8;
+$test2[1]=28;
+
+$testAs=[           //associative Array
+"march" => 31,
+"april" => 30,
+"may" => 31,
+"june" => 30
+];
+
+//multidimensional arrays
+$countries = array(  
+"ukraine" => array("areas" => array("Kiev", "Poltava", "Lviv")
+),
+"usa" => array(
+"areas" => array("Washington", "Texas")
+)
+);
+echo "The capital of Ukraine is {$countries["ukraine"]["areas"][0]}"
+
+//the same
+$countries =[
+    "ukraine" =>[
+        "areas" => ["Kiev", "Poltava", "Lviv"],
+        "rivers" => ["Dnipro", "Bug", "Dunay"],        
+    ],
+    "usa" =>[
+        "areas" => ["Washington", "Texas"],
+        "rivers" => ["Ukon", "Rio-Grande", "Ogayo"],        
+    ]
+    ];
+echo "The capital of Ukraine is {$countries["ukraine"]["areas"][0]}"
+
+```
+
+## Class_Object
+
+Using a class, we declare a certain data structure. Оbject is an instance of a class. We can create an infinite number of objects of this class (create class instances).</br>
+
+```php
+class Example                       //class name start from uppercase letter
+{
+var $variable = "variableExample";  //member of class Variable (or creating Properties)
+const CONSTANT = "constantExample"; //member of class CONSTANT (we can't use $ when define)
+function exampleMethod()            //member of class Method (method name start from lowercase letter)
+{
+return "methodExecuteResult";
+}
+
+}
+
+$obj = new Example();               //object name start from lowercase letter    
+var_dump($obj);
+var_dump($obj->variable);
+var_dump(Example::CONSTANT);
+var_dump($obj->exampleMethod());
+```
+Encapsulation - the union of several elements in one isolated entity (for example, in a class), when the elements of this entity are isolated from other code elements. </br>
+We have 3 access modificators:</br>
+- "public" - this member can be accessed by any other code in the application.</br>
+- "protected" - the member can only be accessed by code in the same class or in a class derived from this class.</br>
+- "private" - the member can only be accessed by code from the same class.</br>
+By default, all class members are public, but it's good practice to declare this explicitly.</br>
+
+
+Inheritance - creation of child classes based on the base class (Best practice is use  Composition or Aggregation with Abstract Class or Interface(see Patterns below)).</br>
+
+
+
+
 
 ## LARAVEL
 

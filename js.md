@@ -479,10 +479,13 @@ elements.map((element) => element.length);
 
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions#%D0%B7%D0%B0%D0%BC%D1%8B%D0%BA%D0%B0%D0%BD%D0%B8%D1%8F </br>
 
+Closure is created when the nested function somehow becomes available in some scope outside the outer function. </br>
+In this case variables and functions declared in the outer function will continue to exist after its execution for the nested function. </br>
+
 ```jsx
 //first case
-var pet = function (name) {
-  var getName = function () {
+let pet = function (name) {
+  let getName = function () {
     return name;
   };
   return getName;
@@ -502,7 +505,7 @@ const out = function (count) {
       }
     } else {
       let countN = Object.keys(ob).length + count;
-      for (let i = count; i < countN; i++) {
+      for (let i = Object.keys(ob).length+1; i < countN; i++) {
         console.log(`${i} call in filled object`);
         ob[i] = i;
       }
