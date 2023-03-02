@@ -630,7 +630,66 @@ By default, all class members are public, but it's good practice to declare this
 
 Inheritance - creation of child classes based on the base class (Best practice is use  Composition or Aggregation with Abstract Class or Interface(see Patterns below)).</br>
 
+```php
+class Base
+{
+  var $variable = "variableBase"; //we can't use 3 access modificators for "var" - this is Public as default
+  public  const CONSTANT = "constantBase"; 
+}
 
+class NextBase extends Base
+{
+   var $nextVariable = "variableNextBase"; //we can't use 3 access modificators for "var" - this is Public as default
+   public const NEXTCONSTANT = "constantNextBase"; 
+} 
+
+$exampleInheritance= new NextBase(); 
+var_dump($exampleInheritance->variable);
+var_dump($exampleInheritance->nextVariable);
+var_dump(NextBase::CONSTANT);
+var_dump(NextBase::NEXTCONSTANT);
+
+```
+
+Polymorphism. Basic definition: one interface and many implementations (this also includes function overloads and so on, which allows the same functionality to process data of different types - the general classical definition of polymorphism).</br>
+In PHP polymorphism as rule use in AbstractClasses and Interfaces.</br>
+
+Abstract Classes:</br>
+
+```php
+abstract class Builder {//we can't create new abstract class "new Builder" - only implementations
+    abstract public function build();
+    //in abstract class we also can use All other ClassMembers (var, const, props, not abstract methods etc), as example:
+    public  const CONSTANT = "constantAbstractExample";
+}
+
+class WoodBuilder extends Builder {//first implementation of abstractClass Builder
+    public function build(){
+        echo "Build wood house \n";
+    }    
+} 
+
+class ConcreteBuilder extends Builder {//second implementation of abstractClass Builder
+      public function build(){
+        echo "Build concrete house \n";
+    }      
+} 
+
+$wb = new WoodBuilder;
+$cb = new ConcreteBuilder;
+
+//now we can get access to different functions in different objects (from different classes) by common interface (abstract class Builder):
+
+function tryBuild (Builder $b){
+    $b->build();
+}
+
+tryBuild($wb); //Build wood house
+tryBuild($cb); //Build concrete house
+var_dump(WoodBuilder::CONSTANT); //constantAbstractExample
+var_dump(ConcreteBuilder::CONSTANT); //constantAbstractExample
+
+```
 
 
 
