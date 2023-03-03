@@ -605,20 +605,36 @@ Using a class, we declare a certain data structure. Оbject is an instance of a 
 ```php
 class Example                       //class name start from uppercase letter
 {
-var $variable = "variableExample";  //member of class Variable (or creating Properties)
-const CONSTANT = "constantExample"; //member of class CONSTANT (we can't use $ when define)
-function exampleMethod()            //member of class Method (method name start from lowercase letter)
+var $variable = "variableExample";  //member of class Variable (or creating Properties). Always Public as default. Modificator "public" will Wrong.
+public static $variableStatic = "variableStaticExample"; //member of class StaticVariable. We can get access to StaticVariable that way: Example::$variableStatic 
+public const CONSTANT = "constantExample"; //member of class CONSTANT (we can't use $ when define). We can get access to CONSTANT that way: Example::CONSTANT 
+public function exampleMethod()            //member of class Method (method name start from lowercase letter)
 {
 return "methodExecuteResult";
+}
+
+//property, getter, setter
+private $props; // member of class Property
+public function getProps() //member of class Getter
+{
+return $this->props; //$this - contex of object from that class
+}
+public function setProps($props) //member of class Setter
+{
+$this->props = ucwords(strtolower($props)); //$this - contex of object from that class
 }
 
 }
 
 $obj = new Example();               //object name start from lowercase letter    
 var_dump($obj);
-var_dump($obj->variable);
-var_dump(Example::CONSTANT);
-var_dump($obj->exampleMethod());
+var_dump($obj->variable); //variableExample
+var_dump(Example::$variableStatic); //variableStaticExample
+var_dump(Example::CONSTANT); //constantExample
+var_dump($obj->exampleMethod()); //methodExecuteResult
+
+$obj->setProps("propertyValue");
+var_dump($obj->getProps()); //propertyValue
 ```
 Encapsulation - the union of several elements in one isolated entity (for example, in a class), when the elements of this entity are isolated from other code elements. </br>
 We have 3 access modificators:</br>
@@ -688,9 +704,65 @@ tryBuild($wb); //Build wood house
 tryBuild($cb); //Build concrete house
 var_dump(WoodBuilder::CONSTANT); //constantAbstractExample
 var_dump(ConcreteBuilder::CONSTANT); //constantAbstractExample
+echo Builder::CONSTANT; //constantAbstractExample
 
 ```
+Interfaces:</br>
 
+```php
+//in an interface, unlike abstract classes, we can only define abstract methods and CONSTANTS (as default all methods is abstract, the word Abstract is not used). All other ClassMember we can't create in interface.
+interface IBuilder{//we can't create new class "new IBuilder" - only implementations
+    public function build(); 
+     public  const CONSTANT = "constantInterfaceExample";
+}
+
+class WoodBuilder implements IBuilder {//first implementation of interface IBuilder
+    public function build(){
+        echo "Build wood house \n";
+    }    
+} 
+
+class ConcreteBuilder implements IBuilder {//second implementation of interface IBuilder
+      public function build(){
+        echo "Build concrete house \n";
+    }      
+} 
+
+$wb = new WoodBuilder;
+$cb = new ConcreteBuilder;
+
+//now we can get access to different functions in different objects (from different classes) by common interface (interface IBuilder):
+
+function tryBuild (IBuilder $b){
+    $b->build();
+}
+
+tryBuild($wb); //Build wood house
+tryBuild($cb); //Build concrete house
+var_dump(WoodBuilder::CONSTANT); //constantInterfaceExample
+var_dump(ConcreteBuilder::CONSTANT); //constantInterfaceExample
+echo IBuilder::CONSTANT; //constantInterfaceExample
+
+//interfaces can inherit other (several other) interface by "extends":
+interface A
+{
+    public function foo();
+}
+interface B extends A
+{
+    public function baz(Baz $baz);
+}
+interface C extends A, B
+{
+    public function baz();
+}
+
+//one class can impliments several interfaces:
+class MyClass implements A, B{}
+
+//word "extends" need put until "impliments":
+class Two extends One implements Usable, Updatable {} 
+```
 
 
 ## LARAVEL
