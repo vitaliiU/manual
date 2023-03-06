@@ -1,5 +1,9 @@
 # PHP Manual
 
+<p align="center">
+  <img src="55.png" width="350" title="hover text"> 
+</p>
+
 ## Content
 
 - [Generalinfo](#Genera_info)
@@ -795,10 +799,10 @@ SQL - Structured Query Language. </br>
 This is declarative programming language for interacting with relational databases.</br>
 DBMS - database management systems (is the software that interacts with end users, applications, and the database itself to capture and analyze the data). There are several DBMS based on SQL (each with own procedural variety of SQL): </br>
 
-MySQL 	                            - SQL/PSM 	(SQL/Persistent Stored Module) 
-Oracle 	                            - PL/SQL 	(Procedural Language/SQL)
-Microsoft SQL Server/Sybase ASE 	- Transact-SQL 
-PostgreSQL 	                        - PL/pgSQL 	(Procedural Language/PostgreSQL)
+MySQL 	                            - SQL/PSM 	(SQL/Persistent Stored Module) </br>
+Oracle 	                            - PL/SQL 	(Procedural Language/SQL)</br>
+Microsoft SQL Server/Sybase ASE 	- Transact-SQL </br>
+PostgreSQL 	                        - PL/pgSQL 	(Procedural Language/PostgreSQL)</br>
 Borland InterBase/Firebird 	        - PSQL (Procedural SQL) </br> 
 IBM DB2 	                        - SQL PL 	(SQL Procedural Language) </br>
 
