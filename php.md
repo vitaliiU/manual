@@ -10,6 +10,7 @@
 - [Function](#Function)
 - [Array](#Array)
 - [Class_Object](#Class_Object)
+- [SQL](#SQL)
 
 - [LARAVEL](#LARAVEL)
 - [Middleware](#Middleware)
@@ -600,18 +601,35 @@ echo "The capital of Ukraine is {$countries["ukraine"]["areas"][0]}"
 
 ## Class_Object
 
+- [mainClassInfo](#mainClassInfo)
+- [encapsulation](#encapsulation)
+- [inheritance](#inheritance)
+- [polymorphism](#polymorphism)
+- [abstractClasses](#abstractClasses)
+- [interfaces](#interfaces)
+
+
+### mainClassInfo
+
 Using a class, we declare a certain data structure. Оbject is an instance of a class. We can create an infinite number of objects of this class (create class instances).</br>
 
 ```php
 class Example                       //class name start from uppercase letter
 {
 var $variable = "variableExample";  //member of class Variable (or creating Properties). Always Public as default. Modificator "public" will Wrong.
-public static $variableStatic = "variableStaticExample"; //member of class StaticVariable. We can get access to StaticVariable that way: Example::$variableStatic 
-public const CONSTANT = "constantExample"; //member of class CONSTANT (we can't use $ when define). We can get access to CONSTANT that way: Example::CONSTANT 
 public function exampleMethod()            //member of class Method (method name start from lowercase letter)
 {
 return "methodExecuteResult";
 }
+public const CONSTANT = "constantExample"; //member of class CONSTANT (we can't use $ when define). We can get access to CONSTANT that way: Example::CONSTANT 
+public static $variableStatic = "variableStaticExample"; //member of class StaticVariable. 
+public static function staticFuncExample($param)
+{
+var_dump($param);
+}
+//We can get access to StaticVariable that way: Example::$variableStatic || Example::staticFuncExample("someValue");
+//for access to Static member we need use "self" (this class) && "parent" (parent class):
+//var_dump(self::$test, parent::$qwerty);
 
 //property, getter, setter
 private $props; // member of class Property
@@ -630,12 +648,15 @@ $obj = new Example();               //object name start from lowercase letter
 var_dump($obj);
 var_dump($obj->variable); //variableExample
 var_dump(Example::$variableStatic); //variableStaticExample
+Example::staticFuncExample("someValue"); //someValue
 var_dump(Example::CONSTANT); //constantExample
 var_dump($obj->exampleMethod()); //methodExecuteResult
 
 $obj->setProps("propertyValue");
 var_dump($obj->getProps()); //propertyValue
 ```
+
+### encapsulation
 Encapsulation - the union of several elements in one isolated entity (for example, in a class), when the elements of this entity are isolated from other code elements. </br>
 We have 3 access modificators:</br>
 - "public" - this member can be accessed by any other code in the application.</br>
@@ -643,7 +664,7 @@ We have 3 access modificators:</br>
 - "private" - the member can only be accessed by code from the same class.</br>
 By default, all class members are public, but it's good practice to declare this explicitly.</br>
 
-
+### inheritance
 Inheritance - creation of child classes based on the base class (Best practice is use  Composition or Aggregation with Abstract Class or Interface(see Patterns below)).</br>
 
 ```php
@@ -667,9 +688,11 @@ var_dump(NextBase::NEXTCONSTANT);
 
 ```
 
+### polymorphism
 Polymorphism. Basic definition: one interface and many implementations (this also includes function overloads and so on, which allows the same functionality to process data of different types - the general classical definition of polymorphism).</br>
 In PHP polymorphism as rule use in AbstractClasses and Interfaces.</br>
 
+### abstractClasses
 Abstract Classes:</br>
 
 ```php
@@ -707,6 +730,8 @@ var_dump(ConcreteBuilder::CONSTANT); //constantAbstractExample
 echo Builder::CONSTANT; //constantAbstractExample
 
 ```
+
+### interfaces
 Interfaces:</br>
 
 ```php
@@ -763,6 +788,19 @@ class MyClass implements A, B{}
 //word "extends" need put until "impliments":
 class Two extends One implements Usable, Updatable {} 
 ```
+
+## SQL
+
+SQL - Structured Query Language. </br>
+This is declarative programming language for interacting with relational databases.</br>
+DBMS - database management systems (is the software that interacts with end users, applications, and the database itself to capture and analyze the data). There are several DBMS based on SQL (each with own procedural variety of SQL): </br>
+
+MySQL 	                            - SQL/PSM 	(SQL/Persistent Stored Module) 
+Oracle 	                            - PL/SQL 	(Procedural Language/SQL)
+Microsoft SQL Server/Sybase ASE 	- Transact-SQL 
+PostgreSQL 	                        - PL/pgSQL 	(Procedural Language/PostgreSQL)
+Borland InterBase/Firebird 	        - PSQL (Procedural SQL) </br> 
+IBM DB2 	                        - SQL PL 	(SQL Procedural Language) </br>
 
 
 ## LARAVEL
