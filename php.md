@@ -1,7 +1,7 @@
 # PHP Manual
 
 <p align="center">
-  <img src="55.png" width="350" title="hover text"> 
+  <img src="/img/55.png" width="350" title="hover text"> 
 </p>
 
 ## Content
@@ -806,6 +806,15 @@ PostgreSQL 	                        - PL/pgSQL 	(Procedural Language/PostgreSQL)
 Borland InterBase/Firebird 	        - PSQL (Procedural SQL) </br> 
 IBM DB2 	                        - SQL PL 	(SQL Procedural Language) </br>
 
+
+Between the elements of relativistic databases there are the following possible relationships:</br>
+1. One to one (One Country to One Capital).</br>
+2. One to many (One Country to Many Сities). </br>
+3. Many to many (Many Rivers to Many Countries (through which they go)). For this case need third additional table (where we will make reference between id from 2 main tables).</br>
+
+The process of dividing elements of relativistic databases into elementary tables is called database normalization.</br>
+1. First normal form (1NF). Two rows of the table should not be repeated (have the same content). Each row must have a unique primary key (usually an ID). No table cell should contain multiple values (for example, separated by commas).The order of columns and rows does not matter (makes no sense). Columns have no sub-columns (splits)</br>
+2. 
 
 ## LARAVEL
 
