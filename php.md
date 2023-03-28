@@ -338,10 +338,10 @@ echo $y; // Outputs 10
 
 ## RequireInclude
 
-https://www.php.net/manual/ru/function.require.php
-https://www.php.net/manual/ru/function.include.php
-https://www.php.net/manual/ru/function.require-once.php
-https://www.php.net/manual/ru/function.include-once.php
+https://www.php.net/manual/ru/function.require.php</br>
+https://www.php.net/manual/ru/function.include.php</br>
+https://www.php.net/manual/ru/function.require-once.php</br>
+https://www.php.net/manual/ru/function.include-once.php</br>
 
 ## Function
 
@@ -795,6 +795,17 @@ class Two extends One implements Usable, Updatable {}
 
 ## SQL
 
+- [mainSqlInfo](#mainSqlInfo)
+- [relationships](#relationships)
+- [normalization](#normalization)
+- [primaryKey](#primaryKey)
+- [foreignKey](#foreignKey)
+- [dataType](#dataType)
+- [constraints](#constraints)
+- [mainComands](#mainComands)
+
+
+### mainSqlInfo
 SQL - Structured Query Language. </br>
 This is declarative programming language for interacting with relational databases.</br>
 DBMS - database management systems (is the software that interacts with end users, applications, and the database itself to capture and analyze the data). There are several DBMS based on SQL (each with own procedural variety of SQL): </br>
@@ -806,15 +817,71 @@ PostgreSQL 	                        - PL/pgSQL 	(Procedural Language/PostgreSQL)
 Borland InterBase/Firebird 	        - PSQL (Procedural SQL) </br> 
 IBM DB2 	                        - SQL PL 	(SQL Procedural Language) </br>
 
-
+### relationships
 Between the elements of relativistic databases there are the following possible relationships:</br>
 1. One to one (One Country to One Capital).</br>
 2. One to many (One Country to Many Сities). </br>
 3. Many to many (Many Rivers to Many Countries (through which they go)). For this case need third additional table (where we will make reference between id from 2 main tables).</br>
 
+### normalization
 The process of dividing elements of relativistic databases into elementary tables is called database normalization.</br>
 1. First normal form (1NF). Two rows of the table should not be repeated (have the same content). Each row must have a unique primary key (usually an ID). No table cell should contain multiple values (for example, separated by commas).The order of columns and rows does not matter (makes no sense). Columns have no sub-columns (splits)</br>
-2. 
+2. Second normal form (2NF). (2NF use for composite primary keys. As rule in BD we use ID - not  composite primary key. In case using ID, 2NF we don't need). So 2NF say: for composite primary keys all data in each table cell must depend on all parts of composite primary keys. As example: primary key <StudentName && Adress> and Column <Faculty> - 2NF not complied with (<Faculty> don't depend on <Adress>).</br>
+3. Third normal form (3NF). There should not be a transitive dependence of non-key elements in the string (that is, one non-key element should not depend on another so that there is no duplication of data). As example: primary key <exam && dataTime>, first non-key column <student>, second non-key column <dataBithday>. 3NF not complied with (<dataBithday> depend on <student>. So if the same student is registered for another exam, we will have to unnecessarily duplicate his date of birth as well).</br>
+
+### primaryKey
+Primary Key - every table must have One Primary Key (consisted from one or several column). This Primary Key is unike (as default) for each row. As rule Primary Key is comlumn ID (generated automaticaly)</br>
+
+### foreignKey
+Foreign keys are used to create relationships between tables. In fact, these are links to a column of another table (usually to the columns of the primary key ID) ( FOREIGN KEY (StudentId)  REFERENCES Students (Id))</br>
+
+With a possible deletion or change of a foreign key (to preserve the integrity of the database), the following commands are used:</br>
+1. ON DELETE - sets the actions to be taken when a related row is removed from the main table</br>
+2. ON UPDATE - sets the actions to be taken when a related row is changed in the main table</br>
+
+Attributes this commands:</br>
+1. CASCADE - automatically deletes or changes rows from a dependent table when related rows in the master table are deleted or changed (ON DELETE CASCADE, ON UPDATE CASCADE)</br>
+2. SET NULL - when deleting or updating a related row from the main table, sets the foreign key column to NULL. (In this case, the foreign key column must support NULL value). (ON DELETE SET NULL, ON UPDATE SET NULL)</br>
+3. RESTRICT - rejects deleting or modifying rows in the parent table if there are related rows in the dependent table. (ON DELETE RESTRICT, ON UPDATE RESTRICT)</br>
+4. NO ACTION: - rejects deleting or modifying rows in the parent table if there are related rows in the dependent table. (ON DELETE NO ACTION, ON UPDATE NO ACTION)</br>
+5. SET DEFAULT: - when deleting a related row from the main table, sets the foreign key column to the default value, which is set using the DEFAULT attributes. Not recommended because not all databases support this functionality</br>
+
+### dataType
+SQL Data Type</br>
+https://www.w3schools.com/sql/sql_datatypes.asp</br>
+
+### constraints
+https://www.w3schools.com/sql/sql_constraints.asp</br>
+SQL constraints are used to specify rules for the data in a table (NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, CHECK, DEFAULT, CREATE INDEX).</br>
+
+### mainComands
+
+https://www.w3schools.com/sql/default.asp </br>
+
+SHOW DATABASES;</br>
+CREATE DATABASE exampleDB;</br>
+USE exampleDB;</br>
+DROP DATABASE exampleDB;</br>
+DROP DATABASE exampleDB;</br>
+BACKUP DATABASE exampleDB
+TO DISK = 'filepath'; </br>
+DROP DATABASE exampleDB;</br>
+CREATE TABLE Students (
+    StudentID int,
+    LastName varchar(255),
+    FirstName varchar(255)    
+);</br>
+DROP TABLE Students; </br>
+INSERT INTO Students (first_name, last_name) VALUES ('Bill', 'Tuclgunnery');</br>
+SELECT * FROM Students;</br>
+SELECT FirstName, LastName FROM Students;</br>
+SELECT * FROM Students WHERE id > 22 AND FirstName = 'Bill';</br>
+SELECT * FROM Students WHERE id > 22 OR FirstName = 'Bill';</br>
+SELECT * FROM Students WHERE FirstName LIKE 'B%'; //select all names wich starting from B ("Э"%-several simbols, "_" - one simbol)</br>
+SELECT * FROM Students ORDER BY id ASC; (sort by ascending  (DESC - descending))</br>
+//AgregatFunction .....COUNT(), MAX(), MIN(), SUM(), AVG()
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country ORDER BY COUNT(CustomerID) DESC; //"GROUP BY" we use with AgregateFunction: COUNT(), MAX(), MIN(), SUM(), AVG()
+
 
 ## LARAVEL
 
