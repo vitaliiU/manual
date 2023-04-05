@@ -15,6 +15,10 @@
 - [Array](#Array)
 - [Class_Object](#Class_Object)
 - [SQL](#SQL)
+- [DRY_YAGNI_SOLID](#DRY_YAGNI_SOLID)
+- [UML](#UML)
+- [Patterns](#Patterns)
+- [MVC](#MVC)
 
 - [LARAVEL](#LARAVEL)
 - [Middleware](#Middleware)
@@ -877,13 +881,105 @@ SELECT * FROM Students;</br>
 SELECT FirstName, LastName FROM Students;</br>
 SELECT * FROM Students WHERE id > 22 AND FirstName = 'Bill';</br>
 SELECT * FROM Students WHERE id > 22 OR FirstName = 'Bill';</br>
-SELECT * FROM Students WHERE FirstName LIKE 'B%'; //select all names wich starting from B ("Э"%-several simbols, "_" - one simbol)</br>
+SELECT * FROM Students WHERE FirstName LIKE 'B%'; //select all names wich starting from B ("%"-several simbols, "_" - one simbol)</br>
+
 SELECT * FROM Students ORDER BY id ASC; (sort by ascending  (DESC - descending))</br>
-//AgregatFunction .....COUNT(), MAX(), MIN(), SUM(), AVG()
-SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country ORDER BY COUNT(CustomerID) DESC; //"GROUP BY" we use with AgregateFunction: COUNT(), MAX(), MIN(), SUM(), AVG()
+
+//AgregatFunction: 
+COUNT() //count the number of rows that match certain conditions</br>
+ MAX()  //returns max value of column </br>
+ MIN()  //returns min value of column </br>
+ SUM()  //function returns the total sum of a column </br>
+ AVG()  //returns the average value of a column </br>
+
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country ORDER BY COUNT(CustomerID) DESC; //"GROUP BY" we use with AgregateFunction: COUNT(), MAX(), MIN(), SUM(), AVG() </br>
+
+SELECT DISTINCT Scholarship FROM Students; //DISTINCT are eliminated duplicate values</br>
+DELETE FROM Students WHERE id > 24;</br>
+DROP TABLE Students;</br>
+
+JOIN</br>
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.</br>
+We can use: (INNER) JOIN, LEFT (OUTER) JOIN, RIGHT (OUTER) JOIN, FULL (OUTER) JOIN </br>
+
+As example we have 2 tables: </br>
+1. Orders (OrderID 	CustomerID 	OrderDate)</br>
+2. Customers (CustomerID 	CustomerName 	ContactName 	Country)</br>
+
+(INNER) JOIN: Returns table (consisted of column diferent tables DB) that have matching values in both tables.</br>
+
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate</br>
+FROM Orders</br>
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;</br>
+
+We get result table with column: OrderID (from Orders), CustomerName (from Customers), OrderDate (from Orders). And rows, that will have only those values, wich meet the condition (Orders.CustomerID=Customers.CustomerID) on both tables (Orders && Customers). That is, we will get rows with all customer orders with customer names and order dates. Customers who did not place orders are not displayed. And orders without customer names too are not displayed (if possible))))!</br>
+
+LEFT (OUTER) JOIN: Returns table (consisted of column diferent tables DB) wich will have all records from the left table, and the matched records from the right table.</br>
+
+SELECT Customers.CustomerName, Orders.OrderID</br>
+FROM Customers</br>
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID</br>
+ORDER BY Customers.CustomerName;</br>
+
+We get result table with column: CustomerName (from Customers), OrderID (from Orders). And rows, that will have:</br>
+- all records from the left table (CustomerName (from Customers)).
+- only those values, wich meet the condition (Customers.CustomerID = Orders.CustomerID) from the right table (OrderID (from Orders)). </br>
+That is, we will get rows with all customers (even witout orders) and orders (wich meet the condition...). Orders without customer names are not displayed (if possible))))!</br>
 
 
-## LARAVEL
+RIGHT (OUTER) JOIN: Returns table (consisted of column diferent tables DB) wich will have the matched records from the left table and all records from the right table.</br>
+
+SELECT Customers.CustomerName, Orders.OrderID</br>
+FROM Customers</br>
+RIGHT JOIN Orders ON Customers.CustomerID = Orders.CustomerID</br>
+ORDER BY Customers.CustomerName;</br>
+
+We get result table with column: CustomerName (from Customers), OrderID (from Orders). And rows, that will have:</br>
+- only those values, wich meet the condition (Customers.CustomerID = Orders.CustomerID) from the left table (CustomerName (from Customers)). </br>
+- all records from the right table (OrderID (from Orders)).
+That is, we will get rows with customers (wich meet the condition...) and orders (even witout customers .... if it possible))). Customers without orders are not displayed.</br>
+
+
+FULL (OUTER) JOIN: Returns table (consisted of column diferent tables DB) wich will have all records from the left table and all records from the right table.</br>
+
+SELECT Customers.CustomerName, Orders.OrderID</br>
+FROM Customers</br>
+RIGHT JOIN Orders ON Customers.CustomerID = Orders.CustomerID</br>
+ORDER BY Customers.CustomerName;</br>
+
+We get result table with column: CustomerName (from Customers), OrderID (from Orders). And rows, that will have:</br>
+- all records from the left table (CustomerName (from Customers)). </br>
+- all records from the right table (OrderID (from Orders)).
+That is, we will get rows with customers (even witout orders) and orders (even witout customers .... if it possible))). So condition (Customers.CustomerID = Orders.CustomerID) in this case will ignored for both tables.</br>
+
+## DRY_YAGNI_SOLID
+
+DRY, which stands for ‘don’t repeat yourself,’ is a principle of software development that aims at reducing the repetition of patterns and code duplication in favor of abstractions and avoiding redundancy. So if you see what your code need repeated parts, then repeated parts of code need put into a separate functional (function, class ...).</br>
+
+YAGNI principle ("You Aren't Gonna Need It") is a practice in software development which states that features should only be added when required. As a part of the extreme programming (XP) philosophy, YAGNI trims away excess and inefficiency in development to facilitate the desired increased frequency of releases.</br>
+
+SOLID</br>
+S_ingle Responsibility Principle </br>
+O_pen/Closed Principle </br>
+L_iskov Substitution Principle </br>
+I_nterface Segregation Principle </br>
+D_ependency Inversion Principle</br>
+
+In general, we can say that the SOLID principle is needed to create a flexible and editable code (divided into certain parts), in which, if necessary, change (delete, add) some part of the code, you do not need to go through, change and recheck ALL code, just change (add , remove) some small (encapsulated) parts without changing and checking the rest of the code.</br>
+
+That is, to understand all these principles, it is necessary to understand that in the end we strive to freely change some part of the code, leaving the rest of the code unchanged. The same applies to patterns (mvс, etc. - see below)</br>
+
+Single Responsibility Principle </br>
+Each component of the code (class, method, etc.) should have a single responsibility, that is, perform a single task. For example, in a programLibrary, we need a class to print a book (this is the only responsibility). If we add the book search functionality to those class, this is a violation of this principle.</br>
+
+Open/Closed Principle</br>
+Program components must be open for extension but closed for modification. The program should be built in such a way that all its subsequent changes should be implemented by adding new code, and not changing the existing one (at least this should be strived for))).
+
+
+
+## UML
+## Patterns
+## MVC
 
 https://laravel.com/
 
