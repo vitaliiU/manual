@@ -967,19 +967,30 @@ D_ependency Inversion Principle</br>
 
 In general, we can say that the SOLID principle is needed to create a flexible and editable code (divided into certain parts), in which, if necessary, change (delete, add) some part of the code, you do not need to go through, change and recheck ALL code, just change (add , remove) some small (encapsulated) parts without changing and checking the rest of the code.</br>
 
-That is, to understand all these principles, it is necessary to understand that in the end we strive to freely change some part of the code, leaving the rest of the code unchanged. The same applies to patterns (mvс, etc. - see below)</br>
+That is, to understand all these principles, it is necessary to understand that in the end we strive to freely change (add, replace, delete) some part of the code, leaving the rest of the code unchanged. The same applies to patterns (mvс, etc. - see below)</br>
 
 Single Responsibility Principle </br>
 Each component of the code (class, method, etc.) should have a single responsibility, that is, perform a single task. For example, in a programLibrary, we need a class to print a book (this is the only responsibility). If we add the book search functionality to those class, this is a violation of this principle.</br>
 
 Open/Closed Principle</br>
-Program components must be open for extension but closed for modification. The program should be built in such a way that all its subsequent changes should be implemented by adding new code, and not changing the existing one (at least this should be strived for))).
+Program components must be open for extension but closed for modification. The program should be built in such a way that all its subsequent changes should be implemented by adding new code, and not changing the existing one (at least this should be strived for))). Of course, this applies to the functionality planned for change.</br>
+For example, we have a Programmer class that can write C programs. But initially we assume that his skills will expand and improve over time. Accordingly, in order to add a PHP programming skill, we should use this principle - we should not change anything - just add a new component to the existing ones (for example, an associative array of Skills with elements with a common interface, etc.)</br>
 
+Liskov Substitution Principle </br>
+This principle requires: in the case of using its derived (child) elements instead of the base (parent) element, the general functionality of the program should not change. That is, we should be able to use derived elements from the base ones without violating the logic of the program.
 
+Interface Segregation Principle</br>
+Interfaces should contain only the functionality that is used in the elements (classes) that depend on them. That is, if an interface contains a method definition, and this method is not implemented and not used in a class that depends on it, this is a violation of this principle. It looks like the single responsibility principle - for its implementation it is necessary to split the interfaces into elementary components, not to use bold and bloated interfaces.</br>
+
+Dependency Inversion Principle</br>
+Program elements that use the functionality of other program elements should not depend on their functionality (for example, on their methods) directly. This dependency should be implemented through abstractions (abstract classes, interfaces).</br>
+For example, we have a next-level class (dependent) in which we use the method of another previous-level class (on which we depend) using association (composition, aggregation) (see below). According to this principle, in this case we need to additionally create an abstraction (abstract class, interface). This abstraction will be implemented by our previous-level class (on which we depend). And we will transfer the abstraction to the next-level class (dependent), in which we will use the methods of the previous-level class (on which we depend) using the abstraction in which they were defined.</br>
 
 ## UML
 ## Patterns
 ## MVC
+
+## LARAVEL
 
 https://laravel.com/
 
