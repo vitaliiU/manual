@@ -989,7 +989,7 @@ For example, we have previous-level class (on which we depend) with some methods
 ## UML
 https://en.wikipedia.org/wiki/Class_diagram
 
-UML - Unified Modeling Language. </br>
+<h5>UML - Unified Modeling Language. </h5></br>
 UML is an open standard that uses graphical notation to create an abstract model of a system, called a UML model. The UML was created to define, visualize, design and document, basically, software systems. UML is not a programming language, but code generation is possible based on UML models.</br>
 
 In softDevelopment as rule we use only UML part - class diagram.</br>
@@ -1024,7 +1024,7 @@ Relationships.</br>
 <p align="center">
   <img src="/img/depend.png" width="450" title="hover text"> 
 </p>
- Exists between two elements if changes to the definition of one element (previous-level class (on which we depend) - the server or target)))morons)!) may cause changes to the other (next-level class (dependent)- the client or source))) again MORONS)!).</br>
+ Exists between two elements if changes to the definition of one element (previous-level class (on which we depend) - the server or target)))) may cause changes to the other (next-level class (dependent)- the client or source)))).</br>
  As example we use method of previous-level class (on which we depend) in next-level class (dependent). In this case if we will change those method in previous-level class (on which we depend) - this changes will influence on next-level class (dependent) making him dependent.</br>
  Please note that in accordance with the SOLID principle, the dependency must be made using additional abstractions (see above).</br>
 
