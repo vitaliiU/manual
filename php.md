@@ -843,7 +843,7 @@ With a possible deletion or change of a foreign key (to preserve the integrity o
 1. ON DELETE - sets the actions to be taken when a related row is removed from the main table</br>
 2. ON UPDATE - sets the actions to be taken when a related row is changed in the main table</br>
 
-Attributes this commands:</br>
+#### Attributes this commands:
 1. CASCADE - automatically deletes or changes rows from a dependent table when related rows in the master table are deleted or changed (ON DELETE CASCADE, ON UPDATE CASCADE)</br>
 2. SET NULL - when deleting or updating a related row from the main table, sets the foreign key column to NULL. (In this case, the foreign key column must support NULL value). (ON DELETE SET NULL, ON UPDATE SET NULL)</br>
 3. RESTRICT - rejects deleting or modifying rows in the parent table if there are related rows in the dependent table. (ON DELETE RESTRICT, ON UPDATE RESTRICT)</br>
@@ -885,7 +885,7 @@ SELECT * FROM Students WHERE FirstName LIKE 'B%'; //select all names wich starti
 
 SELECT * FROM Students ORDER BY id ASC; (sort by ascending  (DESC - descending))</br>
 
-//AgregatFunction: 
+#### AgregatFunction: 
 COUNT() //count the number of rows that match certain conditions</br>
  MAX()  //returns max value of column </br>
  MIN()  //returns min value of column </br>
@@ -898,7 +898,7 @@ SELECT DISTINCT Scholarship FROM Students; //DISTINCT are eliminated duplicate v
 DELETE FROM Students WHERE id > 24;</br>
 DROP TABLE Students;</br>
 
-JOIN</br>
+#### JOIN
 A JOIN clause is used to combine rows from two or more tables, based on a related column between them.</br>
 We can use: (INNER) JOIN, LEFT (OUTER) JOIN, RIGHT (OUTER) JOIN, FULL (OUTER) JOIN </br>
 
@@ -906,7 +906,8 @@ As example we have 2 tables: </br>
 1. Orders (OrderID 	CustomerID 	OrderDate)</br>
 2. Customers (CustomerID 	CustomerName 	ContactName 	Country)</br>
 
-(INNER) JOIN: Returns table (consisted of column diferent tables DB) that have matching values in both tables.</br>
+#### (INNER) JOIN: 
+Returns table (consisted of column diferent tables DB) that have matching values in both tables.</br>
 
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate</br>
 FROM Orders</br>
@@ -914,7 +915,8 @@ INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;</br>
 
 We get result table with column: OrderID (from Orders), CustomerName (from Customers), OrderDate (from Orders). And rows, that will have only those values, wich meet the condition (Orders.CustomerID=Customers.CustomerID) on both tables (Orders && Customers). That is, we will get rows with all customer orders with customer names and order dates. Customers who did not place orders are not displayed. And orders without customer names too are not displayed (if possible))))!</br>
 
-LEFT (OUTER) JOIN: Returns table (consisted of column diferent tables DB) wich will have all records from the left table, and the matched records from the right table.</br>
+#### LEFT (OUTER) JOIN:
+ Returns table (consisted of column diferent tables DB) wich will have all records from the left table, and the matched records from the right table.</br>
 
 SELECT Customers.CustomerName, Orders.OrderID</br>
 FROM Customers</br>
@@ -927,7 +929,8 @@ We get result table with column: CustomerName (from Customers), OrderID (from Or
 That is, we will get rows with all customers (even witout orders) and orders (wich meet the condition...). Orders without customer names are not displayed (if possible))))!</br>
 
 
-RIGHT (OUTER) JOIN: Returns table (consisted of column diferent tables DB) wich will have the matched records from the left table and all records from the right table.</br>
+#### RIGHT (OUTER) JOIN: 
+Returns table (consisted of column diferent tables DB) wich will have the matched records from the left table and all records from the right table.</br>
 
 SELECT Customers.CustomerName, Orders.OrderID</br>
 FROM Customers</br>
@@ -940,7 +943,8 @@ We get result table with column: CustomerName (from Customers), OrderID (from Or
 That is, we will get rows with customers (wich meet the condition...) and orders (even witout customers .... if it possible))). Customers without orders are not displayed.</br>
 
 
-FULL (OUTER) JOIN: Returns table (consisted of column diferent tables DB) wich will have all records from the left table and all records from the right table.</br>
+#### FULL (OUTER) JOIN: 
+Returns table (consisted of column diferent tables DB) wich will have all records from the left table and all records from the right table.</br>
 
 SELECT Customers.CustomerName, Orders.OrderID</br>
 FROM Customers</br>
@@ -954,11 +958,13 @@ That is, we will get rows with customers (even witout orders) and orders (even w
 
 ## DRY_YAGNI_SOLID
 
-DRY, which stands for ‘don’t repeat yourself,’ is a principle of software development that aims at reducing the repetition of patterns and code duplication in favor of abstractions and avoiding redundancy. So if you see what your code need repeated parts, then repeated parts of code need put into a separate functional (function, class ...).</br>
+#### DRY
+ which stands for ‘don’t repeat yourself,’ is a principle of software development that aims at reducing the repetition of patterns and code duplication in favor of abstractions and avoiding redundancy. So if you see what your code need repeated parts, then repeated parts of code need put into a separate functional (function, class ...).</br>
 
-YAGNI principle ("You Aren't Gonna Need It") is a practice in software development which states that features should only be added when required. As a part of the extreme programming (XP) philosophy, YAGNI trims away excess and inefficiency in development to facilitate the desired increased frequency of releases.</br>
+#### YAGNI
+ principle ("You Aren't Gonna Need It") is a practice in software development which states that features should only be added when required. As a part of the extreme programming (XP) philosophy, YAGNI trims away excess and inefficiency in development to facilitate the desired increased frequency of releases.</br>
 
-SOLID</br>
+#### SOLID</br>
 S_ingle Responsibility Principle </br>
 O_pen/Closed Principle </br>
 L_iskov Substitution Principle </br>
@@ -969,20 +975,20 @@ In general, we can say that the SOLID principle is needed to create a flexible a
 
 That is, to understand all these principles, it is necessary to understand that in the end we strive to freely change (add, replace, delete) some part of the code, leaving the rest of the code unchanged. The same applies to patterns (mvс, etc. - see below)</br>
 
-Single Responsibility Principle </br>
+#### Single Responsibility Principle </br>
 Each component of the code (class, method, etc.) should have a single responsibility, that is, perform a single task. For example, in a programLibrary, we need a class to print a book (this is the only responsibility). If we add the book search functionality to those class, this is a violation of this principle.</br>
 
-Open/Closed Principle</br>
+#### Open/Closed Principle</br>
 Program components must be open for extension but closed for modification. The program should be built in such a way that all its subsequent changes should be implemented by adding new code, and not changing the existing one (at least this should be strived for))). Of course, this applies to the functionality planned for change.</br>
 For example, we have a Programmer class that can write C programs. But initially we assume that his skills will expand and improve over time. Accordingly, in order to add a PHP programming skill, we should use this principle - we should not change anything - just add a new component to the existing ones (for example, an associative array of Skills with elements with a common interface, etc.)</br>
 
-Liskov Substitution Principle </br>
+#### Liskov Substitution Principle </br>
 This principle requires: in the case of using its derived (child) elements instead of the base (parent) element, the general functionality of the program should not change. That is, we should be able to use derived elements from the base ones without violating the logic of the program.
 
-Interface Segregation Principle</br>
+#### Interface Segregation Principle</br>
 Interfaces should contain only the functionality that is used in the elements (classes) that depend on them. That is, if an interface contains a method definition, and this method is not implemented and not used in a class that depends on it, this is a violation of this principle. It looks like the single responsibility principle - for its implementation it is necessary to split the interfaces into elementary components, not to use bold and bloated interfaces.</br>
 
-Dependency Inversion Principle</br>
+#### Dependency Inversion Principle</br>
 Program elements that use the functionality of other program elements should not depend on their functionality (for example, on their methods) directly. This dependency should be implemented through abstractions (abstract classes, interfaces).</br>
 For example, we have previous-level class (on which we depend) with some methods. This methods we need use in a next-level class (dependent), using association (composition, aggregation) (see below). According to this principle, in this case we need to additionally create an abstraction (abstract class, interface). This abstraction will be implemented by our previous-level class (on which we depend). And we will transfer the abstraction to the next-level class (dependent), in which we will use the methods of the previous-level class (on which we depend) using the abstraction in which they were defined.</br>
 
@@ -992,14 +998,14 @@ https://en.wikipedia.org/wiki/Class_diagram
 #### UML - Unified Modeling Language. 
 UML is an open standard that uses graphical notation to create an abstract model of a system, called a UML model. The UML was created to define, visualize, design and document, basically, software systems. UML is not a programming language, but code generation is possible based on UML models.</br>
 
-In softDevelopment as rule we use only UML part - class diagram.</br>
+#### In softDevelopment as rule we use only UML part - class diagram.</br>
 
 The class is the key element in object-oriented modeling. In the diagram, the classes are presented in boxes containing three components:
 1. At the top - the class name (in bold and centered, and the first letter is capitalized).</br>
 2. At center - fields of the class (left-aligned and the first letter is lowercase).</br>
 3. At bottom - the class methods (left-aligned and the first letter is lowercase).</br>
 
-Visibility.</br>
+#### Visibility.</br>
 Visibility of a class member must be placed before their name.</br>
 +/ 	Public</br>
 -/ 	Private</br>
@@ -1007,20 +1013,20 @@ Visibility of a class member must be placed before their name.</br>
 ~/ 	Package </br>
 Also we use "/" before derived properties (props use outer sourses (other props etc))</br>
 
-Scopes.</br>
+#### Scopes.</br>
 The UML specifies two types of scope for members:</br>
 - Instance members (not underlined names). Are scoped to a specific instance. Attribute values may vary between instances. Method invocation may affect the instance’s state (i.e. change instance’s attributes).</br>
 - Class members or Static members (underlined names). The scope end is the class itself. Attribute values are equal for all instances. Method invocation does not affect the classifier’s state.</br>
 
-Relationships.</br>
+#### Relationships.</br>
 !!!! General rule - the arrow is always directed from the next-level class (dependent or derived or children or subclass or assebly etc) to the previous-level class (on which we depend or parent or superclass or component etc). That is there is inversion (from complex to simple or from end to beginning) (as usually - really CLEVER!!)). Please note that for aggregation and composition, a rhombus is not an arrow (there are both arrows and rhombuses)</br>
 <p align="center">
   <img src="/img/relationships.png" width="450" title="hover text"> 
 </p>
 
-1. Instance-level relationships.</br>
+#### 1. Instance-level relationships.</br>
 
-1.1 Dependency. </br>
+#### 1.1 Dependency. </br>
 <p align="center">
   <img src="/img/depend.png" width="450" title="hover text"> 
 </p>
