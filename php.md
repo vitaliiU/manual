@@ -984,9 +984,51 @@ Interfaces should contain only the functionality that is used in the elements (c
 
 Dependency Inversion Principle</br>
 Program elements that use the functionality of other program elements should not depend on their functionality (for example, on their methods) directly. This dependency should be implemented through abstractions (abstract classes, interfaces).</br>
-For example, we have a next-level class (dependent) in which we use the method of another previous-level class (on which we depend) using association (composition, aggregation) (see below). According to this principle, in this case we need to additionally create an abstraction (abstract class, interface). This abstraction will be implemented by our previous-level class (on which we depend). And we will transfer the abstraction to the next-level class (dependent), in which we will use the methods of the previous-level class (on which we depend) using the abstraction in which they were defined.</br>
+For example, we have previous-level class (on which we depend) with some methods. This methods we need use in a next-level class (dependent), using association (composition, aggregation) (see below). According to this principle, in this case we need to additionally create an abstraction (abstract class, interface). This abstraction will be implemented by our previous-level class (on which we depend). And we will transfer the abstraction to the next-level class (dependent), in which we will use the methods of the previous-level class (on which we depend) using the abstraction in which they were defined.</br>
 
 ## UML
+https://en.wikipedia.org/wiki/Class_diagram
+
+UML - Unified Modeling Language. </br>
+UML is an open standard that uses graphical notation to create an abstract model of a system, called a UML model. The UML was created to define, visualize, design and document, basically, software systems. UML is not a programming language, but code generation is possible based on UML models.</br>
+
+In softDevelopment as rule we use only UML part - class diagram.</br>
+
+The class is the key element in object-oriented modeling. In the diagram, the classes are presented in boxes containing three components:
+1. At the top - the class name (in bold and centered, and the first letter is capitalized).</br>
+2. At center - fields of the class (left-aligned and the first letter is lowercase).</br>
+3. At bottom - the class methods (left-aligned and the first letter is lowercase).</br>
+
+Visibility.</br>
+Visibility of a class member must be placed before their name.</br>
++/ 	Public</br>
+-/ 	Private</br>
+#/ 	Protected</br>
+~/ 	Package </br>
+Also we use "/" before derived properties (props use outer sourses (other props etc))</br>
+
+Scopes.</br>
+The UML specifies two types of scope for members:</br>
+- Instance members (not underlined names). Are scoped to a specific instance. Attribute values may vary between instances. Method invocation may affect the instance’s state (i.e. change instance’s attributes).</br>
+- Class members or Static members (underlined names). The scope end is the class itself. Attribute values are equal for all instances. Method invocation does not affect the classifier’s state.</br>
+
+Relationships.</br>
+!!!! General rule - the arrow is always directed from the next-level class (dependent or derived or children or subclass or assebly etc) to the previous-level class (on which we depend or parent or superclass or component etc). That is there is inversion (from complex to simple or from end to beginning) (as usually - really CLEVER!!)). Please note that for aggregation and composition, a rhombus is not an arrow (there are both arrows and rhombuses)</br>
+<p align="center">
+  <img src="/img/relationships.png" width="450" title="hover text"> 
+</p>
+
+1. Instance-level relationships.</br>
+
+1.1 Dependency. </br>
+<p align="center">
+  <img src="/img/depend.png" width="450" title="hover text"> 
+</p>
+ Exists between two elements if changes to the definition of one element (previous-level class (on which we depend) - the server or target)))morons)!) may cause changes to the other (next-level class (dependent)- the client or source))) again MORONS)!).</br>
+ As example we use method of previous-level class (on which we depend) in next-level class (dependent). In this case if we will change those method in previous-level class (on which we depend) - this changes will influence on next-level class (dependent) making him dependent.</br>
+ Please note that in accordance with the SOLID principle, the dependency must be made using additional abstractions (see above).</br>
+
+
 ## Patterns
 ## MVC
 
