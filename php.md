@@ -15,7 +15,7 @@
 - [Array](#Array)
 - [Class_Object](#Class_Object)
 - [SQL](#SQL)
-- [DRY_YAGNI_SOLID](#DRY_YAGNI_SOLID)
+- [DRY_YAGNI_KISS_SOLID](#DRY_YAGNI_KISS_SOLID)
 - [UML](#UML)
 - [Patterns](#Patterns)
 - [MVC](#MVC)
@@ -956,7 +956,7 @@ We get result table with column: CustomerName (from Customers), OrderID (from Or
 - all records from the right table (OrderID (from Orders)).
 That is, we will get rows with customers (even witout orders) and orders (even witout customers .... if it possible))). So condition (Customers.CustomerID = Orders.CustomerID) in this case will ignored for both tables.</br>
 
-## DRY_YAGNI_SOLID
+## DRY_YAGNI_KISS_SOLID
 
 #### DRY
  which stands for ‘don’t repeat yourself,’ is a principle of software development that aims at reducing the repetition of patterns and code duplication in favor of abstractions and avoiding redundancy. So if you see what your code need repeated parts, then repeated parts of code need put into a separate functional (function, class ...).</br>
@@ -964,7 +964,10 @@ That is, we will get rows with customers (even witout orders) and orders (even w
 #### YAGNI
  principle ("You Aren't Gonna Need It") is a practice in software development which states that features should only be added when required. As a part of the extreme programming (XP) philosophy, YAGNI trims away excess and inefficiency in development to facilitate the desired increased frequency of releases.</br>
 
-#### SOLID</br>
+#### KISS
+ principle ("Keep it simple stupid (Keep It Short and Simple)") is a practice in software development which states that technical solutions should be as simple as possible (but no more simple than possible)))! Echoes YAGNI.</br>
+
+#### SOLID
 S_ingle Responsibility Principle </br>
 O_pen/Closed Principle </br>
 L_iskov Substitution Principle </br>
@@ -975,20 +978,20 @@ In general, we can say that the SOLID principle is needed to create a flexible a
 
 That is, to understand all these principles, it is necessary to understand that in the end we strive to freely change (add, replace, delete) some part of the code, leaving the rest of the code unchanged. The same applies to patterns (mvс, etc. - see below)</br>
 
-#### Single Responsibility Principle </br>
+#### Single Responsibility Principle 
 Each component of the code (class, method, etc.) should have a single responsibility, that is, perform a single task. For example, in a programLibrary, we need a class to print a book (this is the only responsibility). If we add the book search functionality to those class, this is a violation of this principle.</br>
 
-#### Open/Closed Principle</br>
+#### Open/Closed Principle
 Program components must be open for extension but closed for modification. The program should be built in such a way that all its subsequent changes should be implemented by adding new code, and not changing the existing one (at least this should be strived for))). Of course, this applies to the functionality planned for change.</br>
 For example, we have a Programmer class that can write C programs. But initially we assume that his skills will expand and improve over time. Accordingly, in order to add a PHP programming skill, we should use this principle - we should not change anything - just add a new component to the existing ones (for example, an associative array of Skills with elements with a common interface, etc.)</br>
 
-#### Liskov Substitution Principle </br>
+#### Liskov Substitution Principle 
 This principle requires: in the case of using its derived (child) elements instead of the base (parent) element, the general functionality of the program should not change. That is, we should be able to use derived elements from the base ones without violating the logic of the program.
 
-#### Interface Segregation Principle</br>
+#### Interface Segregation Principle
 Interfaces should contain only the functionality that is used in the elements (classes) that depend on them. That is, if an interface contains a method definition, and this method is not implemented and not used in a class that depends on it, this is a violation of this principle. It looks like the single responsibility principle - for its implementation it is necessary to split the interfaces into elementary components, not to use bold and bloated interfaces.</br>
 
-#### Dependency Inversion Principle</br>
+#### Dependency Inversion Principle
 Program elements that use the functionality of other program elements should not depend on their functionality (for example, on their methods) directly. This dependency should be implemented through abstractions (abstract classes, interfaces).</br>
 For example, we have previous-level class (on which we depend) with some methods. This methods we need use in a next-level class (dependent), using association (composition, aggregation) (see below). According to this principle, in this case we need to additionally create an abstraction (abstract class, interface). This abstraction will be implemented by our previous-level class (on which we depend). And we will transfer the abstraction to the next-level class (dependent), in which we will use the methods of the previous-level class (on which we depend) using the abstraction in which they were defined.</br>
 
@@ -998,14 +1001,14 @@ https://en.wikipedia.org/wiki/Class_diagram
 #### UML - Unified Modeling Language. 
 UML is an open standard that uses graphical notation to create an abstract model of a system, called a UML model. The UML was created to define, visualize, design and document, basically, software systems. UML is not a programming language, but code generation is possible based on UML models.</br>
 
-#### In softDevelopment as rule we use only UML part - class diagram.</br>
+#### In softDevelopment as rule we use only UML part - class diagram.
 
 The class is the key element in object-oriented modeling. In the diagram, the classes are presented in boxes containing three components:
 1. At the top - the class name (in bold and centered, and the first letter is capitalized).</br>
 2. At center - fields of the class (left-aligned and the first letter is lowercase).</br>
 3. At bottom - the class methods (left-aligned and the first letter is lowercase).</br>
 
-#### Visibility.</br>
+#### Visibility.
 Visibility of a class member must be placed before their name.</br>
 +/ 	Public</br>
 -/ 	Private</br>
@@ -1013,20 +1016,20 @@ Visibility of a class member must be placed before their name.</br>
 ~/ 	Package </br>
 Also we use "/" before derived properties (props use outer sourses (other props etc))</br>
 
-#### Scopes.</br>
+#### Scopes.
 The UML specifies two types of scope for members:</br>
 - Instance members (not underlined names). Are scoped to a specific instance. Attribute values may vary between instances. Method invocation may affect the instance’s state (i.e. change instance’s attributes).</br>
 - Class members or Static members (underlined names). The scope end is the class itself. Attribute values are equal for all instances. Method invocation does not affect the classifier’s state.</br>
 
-#### Relationships.</br>
+#### Relationships.
 !!!! General rule - the arrow is always directed from the next-level class (dependent or derived or children or subclass or assebly etc) to the previous-level class (on which we depend or parent or superclass or component etc). That is there is inversion (from complex to simple or from end to beginning) (as usually - really CLEVER!!)). Please note that for aggregation and composition, a rhombus is not an arrow (there are both arrows and rhombuses)</br>
 <p align="center">
   <img src="/img/relationships.png" width="450" title="hover text"> 
 </p>
 
-#### 1. Instance-level relationships.</br>
+#### 1. Instance-level relationships.
 
-#### 1.1 Dependency. </br>
+#### 1.1 Dependency. 
 <p align="center">
   <img src="/img/depend.png" width="450" title="hover text"> 
 </p>
@@ -1034,6 +1037,74 @@ The UML specifies two types of scope for members:</br>
  As example we use method of previous-level class (on which we depend) in next-level class (dependent). In this case if we will change those method in previous-level class (on which we depend) - this changes will influence on next-level class (dependent) making him dependent.</br>
  Please note that in accordance with the SOLID principle, the dependency must be made using additional abstractions (see above).</br>
 
+#### 1.2 Association.
+<p align="center">
+  <img src="/img/assoc.png" width="450" title="hover text"> 
+</p>
+
+```php
+class Team{ 
+}
+class Player{   
+ public Team Team { get; set; }
+}
+```
+An association is a relationship in which objects of one type are related in some way to objects of another type.</br>
+An association can link any number of classes. </br>
+There are four different types of association: bi-directional, uni-directional, aggregation (includes composition aggregation) and reflexive.</br>
+Aggregation and composition are special cases of association.</br>
+
+#### 1.3 Aggregation.
+<p align="center">
+  <img src="/img/agreg.png" width="450" title="hover text"> 
+</p>
+
+```php
+public abstract class Engine
+{ }
+ 
+public class Car
+{
+    Engine engine;
+    public Car(Engine eng)
+    {
+        engine = eng;
+    }
+}
+```
+Aggregation is a special case of association.</br>
+An aggregation may not involve more than two classes; it must be a binary association. </br>
+It assumes a HAS A relationship between classes (that is, one class has another class). Implemented accordingly using the constructor (as a rule) but previous-level class (component or content) is not created in it, but imported from outside.</br>
+
+Aggregation relationship</br>
+    1. When representing a software or database relationship, e.g. car model engine ENG01 is part of a car model CM01, as the engine, ENG01, maybe also part of a different car model.</br>
+    2. When the container is destroyed, the contents are usually not destroyed, e.g. a professor has students; when the professor leaves the university the students do not leave along with them.</br>
+
+#### 1.4 Composition.
+<p align="center">
+  <img src="/img/compos.png" width="450" title="hover text"> 
+</p>
+
+```php
+public class ElectricEngine
+{ }
+ public class Car{
+   ElectricEngine engine;
+    public Car()
+    {
+        engine = new ElectricEngine();
+    }
+}
+```
+Composition is a special case of association.</br>
+An composition may not involve more than two classes; it must be a binary association. </br>
+It assumes a HAS A relationship between classes (that is, one class has another class). Implemented accordingly using the constructor (as a rule), object of previous-level class (component or content) is created in in those constructonr by use "new".</br>
+
+Composition relationship</br>
+    1. When attempting to represent real-world whole-part relationships, e.g. an engine is a part of a car.</br>
+    2. When the container is destroyed, the contents are also destroyed, e.g. a university and its departments.</br>
+
+#### 2.Class-level relationships
 
 ## Patterns
 ## MVC
