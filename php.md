@@ -1,9 +1,5 @@
 # PHP Manual
 
-<p align="center">
-  <img src="/img/55.png" width="350" title="hover text"> 
-</p>
-
 ## Content
 
 - [Generalinfo](#Genera_info)
@@ -997,6 +993,7 @@ For example, we have previous-level class (on which we depend) with some methods
 
 ## UML
 https://en.wikipedia.org/wiki/Class_diagram
+https://metanit.com/sharp/patterns/1.2.php
 
 #### UML - Unified Modeling Language. 
 UML is an open standard that uses graphical notation to create an abstract model of a system, called a UML model. The UML was created to define, visualize, design and document, basically, software systems. UML is not a programming language, but code generation is possible based on UML models.</br>
@@ -1105,6 +1102,45 @@ Composition relationship</br>
     2. When the container is destroyed, the contents are also destroyed, e.g. a university and its departments.</br>
 
 #### 2.Class-level relationships
+
+#### 2.1 Inheritance (Generalization)
+Allows one class (child or subclass) to inherit the functionality of another class (parent or superclass).</br>
+
+```php
+class User
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+ 
+class Manager : User
+{
+    public string Company{ get; set; }
+}
+```
+<p align="center">
+  <img src="/img/inh.png" width="450" title="hover text"> 
+</p>
+
+#### 2.2 Realization (Implementation)
+Realization - is a relationship between two model elements, in which one model element (the client) realizes (implements or executes) the behavior that the other model element (the supplier) specifies. As example: Interface-Class/
+```php
+public interface IMovable
+{
+    void Move();
+}
+public class Car : IMovable
+{
+    public void Move()
+    {
+        Console.WriteLine("Машина едет");
+    }
+}
+```
+<p align="center">
+  <img src="/img/realiz.png" width="450" title="hover text"> 
+</p>
+
 
 ## Patterns
 ## MVC
