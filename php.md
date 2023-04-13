@@ -1119,7 +1119,7 @@ class Manager : User
 }
 ```
 <p align="center">
-  <img src="/img/inh.png" width="450" title="hover text"> 
+  <img src="/img/inh.png" width="250" title="hover text"> 
 </p>
 
 #### 2.2 Realization (Implementation)
@@ -1138,7 +1138,7 @@ public class Car : IMovable
 }
 ```
 <p align="center">
-  <img src="/img/realiz.png" width="450" title="hover text"> 
+  <img src="/img/realiz.png" width="250" title="hover text"> 
 </p>
 
 
