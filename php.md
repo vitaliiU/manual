@@ -1143,6 +1143,132 @@ public class Car : IMovable
 
 
 ## Patterns
+
+https://refactoring.guru/design-patterns
+
+Design patterns are typical solutions to common problems
+in software design.</br>
+
+#### Creational Design Patterns. </br>
+Creational design patterns provide various object creation mechanisms, which increase flexibility and reuse of existing code.</br>
+
+1. Factory Method </br>
+actory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.</br>
+https://refactoring.guru/design-patterns/factory-method  (see Structure UML)</br>
+https://refactoring.guru/design-patterns/factory-method/php/example
+
+2. Abstract Factory </br>
+Abstract Factory is a creational design pattern that lets you produce families of related objects without specifying their concrete classes.</br>
+https://refactoring.guru/design-patterns/abstract-factory (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/abstract-factory/php/example
+
+3. Builder </br>
+Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.</br>
+https://refactoring.guru/design-patterns/builder (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/builder/php/example
+
+4. Singleton </br>
+Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.</br>
+https://refactoring.guru/design-patterns/singleton  (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/singleton/php/example
+
+5. Prototype </br>
+Prototype is a creational design pattern that lets you copy existing objects without making your code dependent on their classes.</br>
+https://refactoring.guru/design-patterns/prototype  (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/prototype/php/example
+
+#### Structural Design Patterns. </br>
+Structural design patterns explain how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient.</br>
+
+1. Adapter </br>
+Adapter is a structural design pattern that allows objects with incompatible interfaces to collaborate.</br>
+https://refactoring.guru/design-patterns/adapter   (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/adapter/php/example
+
+2. Bridge </br> 
+Bridge is a structural design pattern that lets you split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other.</br>
+https://refactoring.guru/design-patterns/bridge  (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/bridge/php/example
+
+3. Composite </br> 
+Composite is a structural design pattern that lets you compose objects into tree structures and then work with these structures as if they were individual objects.</br> 
+https://refactoring.guru/design-patterns/composite  (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/composite/php/example
+
+4. Decorator </br> 
+Decorator is a structural design pattern that lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.</br> 
+https://refactoring.guru/design-patterns/decorator  (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/decorator/php/example
+
+5. Facade </br> 
+Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.</br> 
+https://refactoring.guru/design-patterns/facade  (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/facade/php/example
+
+6. Flyweight </br> 
+Flyweight is a structural design pattern that lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.</br> 
+https://refactoring.guru/design-patterns/flyweight  (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/flyweight/php/example
+
+7. Proxy </br> 
+Proxy is a structural design pattern that lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.</br> 
+https://refactoring.guru/design-patterns/proxy (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/proxy/php/example
+
+#### Behavioral Design Patterns </br>
+Behavioral design patterns are concerned with algorithms and the assignment of responsibilities between objects. </br>
+
+1. Chain of Responsibility </br> 
+Chain of Responsibility is a behavioral design pattern that lets you pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.</br> 
+https://refactoring.guru/design-patterns/chain-of-responsibility (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/chain-of-responsibility/php/example
+
+2. Command (action, transaction) </br> 
+Command is a behavioral design pattern that turns a request into a stand-alone object that contains all information about the request. This transformation lets you pass requests as a method arguments, delay or queue a request’s execution, and support undoable operations.</br> 
+https://refactoring.guru/design-patterns/command (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/command/php/example
+
+3. Iterator </br> 
+Iterator is a behavioral design pattern that lets you traverse elements of a collection without exposing its underlying representation (list, stack, tree, etc.).</br> 
+https://refactoring.guru/design-patterns/iterator (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/iterator/php/example
+
+4. Mediator </br> 
+Mediator is a behavioral design pattern that lets you reduce chaotic dependencies between objects. The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object.</br> 
+https://refactoring.guru/design-patterns/mediator (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/mediator/php/example
+
+5. Memento </br> 
+Memento is a behavioral design pattern that lets you save and restore the previous state of an object without revealing the details of its implementation.</br> 
+https://refactoring.guru/design-patterns/memento (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/memento/php/example
+
+6. Observer </br> 
+Observer is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.</br> 
+https://refactoring.guru/design-patterns/observer (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/observer/php/example
+
+7. State </br> 
+State is a behavioral design pattern that lets an object alter its behavior when its internal state changes. It appears as if the object changed its class.</br> 
+https://refactoring.guru/design-patterns/state (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/state/php/example
+
+8. Strategy </br> 
+Strategy is a behavioral design pattern that lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable.</br> 
+https://refactoring.guru/design-patterns/strategy (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/strategy/php/example
+
+9. Template Method </br> 
+Template Method is a behavioral design pattern that defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.</br> 
+https://refactoring.guru/design-patterns/template-method (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/template-method/php/example
+
+10. Visitor </br> 
+Visitor is a behavioral design pattern that lets you separate algorithms from the objects on which they operate.</br> 
+https://refactoring.guru/design-patterns/visitor (see Structure  UML)</br>
+https://refactoring.guru/design-patterns/visitor/php/example
+
+
 ## MVC
 
 ## LARAVEL
