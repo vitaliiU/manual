@@ -1271,8 +1271,8 @@ https://refactoring.guru/design-patterns/visitor/php/example
 
 ## MVC
 
-https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
-https://ru.wikipedia.org/wiki/Model-View-Controller
+https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller</br>
+https://ru.wikipedia.org/wiki/Model-View-Controller</br>
 
 
 Model-View-Controller (MVC) - a scheme for dividing application data and control logic into three separate components: model, view and controller - so that each component can be modified independently</br>
