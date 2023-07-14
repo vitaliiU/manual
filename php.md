@@ -1153,7 +1153,7 @@ in software design.</br>
 Creational design patterns provide various object creation mechanisms, which increase flexibility and reuse of existing code.</br>
 
 1. Factory Method </br>
-actory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.</br>
+Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.</br>
 https://refactoring.guru/design-patterns/factory-method  (see Structure UML)</br>
 https://refactoring.guru/design-patterns/factory-method/php/example
 
@@ -1270,6 +1270,24 @@ https://refactoring.guru/design-patterns/visitor/php/example
 
 
 ## MVC
+
+https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+https://ru.wikipedia.org/wiki/Model-View-Controller
+
+
+Model-View-Controller (MVC) - a scheme for dividing application data and control logic into three separate components: model, view and controller - so that each component can be modified independently</br>
+
+Since MVC does not have a strict implementation, it can be implemented in different ways. In general, we can display:</br>
+
+<p align="center">
+  <img src="/img/mvc.png" width="450" title="hover text"> 
+</p>
+
+The main and basic principle of the implementation of the MVС is that the Model, View and Controller should be independent of each other in terms of development and replacement (that is, the Model developer, for example, does not need to know what the View and Controller do; the Model (as well as other components) should be possible to be replaced without changing the Controller and View). Also, as a rule, they try to place business logic (im MVC business logic - this is as rule involves processing data in a database) in the Model (avoiding Bold and Thick Controllers). The controller must be thin!!</br>
+
+- Model provides data and responds to controller commands by changing its state. </br>
+- View is responsible for displaying model data to the user, reacting to model changes. </br>
+- Controller interprets the user's actions, notifying the model of the need for changes. </br>
 
 ## LARAVEL
 
