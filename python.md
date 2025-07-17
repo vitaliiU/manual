@@ -84,6 +84,17 @@ print(5 ** 2)  #=25 (5 squared (or the same - 5 to the power of 2))
 print(2 ** 7)  #=128 (2 to the power of 7)
 print(round(22.344678, 2))  #=22.34
 print(round(22.345678, 2))  #=22.35
+print(-x)      # (if x=5) will print: -5 (negated)
+
+####in python standart increment || decrement (++ || --) don't work. need use: x+=1
+x=1
+x+=1
+print(x) #=2
+
+####short form of x=x+2 (the same - * /)
+x=5
+x+=3
+print(x) #=8
 
 ####
 x = 4
@@ -150,6 +161,25 @@ print(ex[1])                     #22
 print(len(ex))                   #5
 ```
 ## BuiltInTypes
+The principal built-in types are numerics, sequences, mappings, classes, instances and exceptions.</br></br>
+
+built-in objects considered false:</br>
+ constants defined to be false: None and False</br>
+ zero of any numeric type: 0, 0.0, 0j, Decimal(0), Fraction(0, 1)</br>
+ empty sequences and collections: '', (), [], {}, set(), range(0)</br></br>
+
+comparison operations: </br>
+<, <=, >, >=, ==, !=, is (object identity (instead of ==)), is not (negated object identity (instead of !=))</br></br>
+
+Numeric Types: int, float, complex</br>
+
+
+
+
+
+
+
+
 
 
 
