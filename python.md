@@ -161,9 +161,18 @@ print(ex[1])                     #22
 print(len(ex))                   #5
 ```
 ## BuiltInTypes
-The principal built-in types are numerics, sequences, mappings, classes, instances and exceptions.</br></br>
+https://docs.python.org/3.14/library/stdtypes.html#typesnumeric</br>
 
-built-in objects considered false:</br>
+The principal built-in types are:</br>
+1. numerics:</br>
+   int, float, complex</br>
+2. sequence</br>
+3. mappings</br>
+4. classes</br>
+5. instance</br>
+6. exceptions</br>
+
+built-in objects considered as false:</br>
  constants defined to be false: None and False</br>
  zero of any numeric type: 0, 0.0, 0j, Decimal(0), Fraction(0, 1)</br>
  empty sequences and collections: '', (), [], {}, set(), range(0)</br></br>
