@@ -164,23 +164,83 @@ print(len(ex))                   #5
 https://docs.python.org/3.14/library/stdtypes.html#typesnumeric</br>
 
 The principal built-in types are:</br>
-1. numerics:</br>
-   int, float, complex</br>
-2. sequence</br>
+
+- [numerics](#numerics)
+- [sequence](#sequence)
+
+### numerics: 
+   int (Booleans are a subtype of integers.), float, complex</br>
+   all numeric types - is Type-Value
+   ```python
+   #int (Type-Value)
+   a = 5
+   b = a
+   a+=2
+   print(f'a= {a}; b= {b}') #a=7, b=5
+   #the same situation in Float (5.555), Complex (5.55+4.4j)
+   ```
+### sequence: 
+Main Sequence: list, tuple, range </br>
+Text Sequence: str</br>
+Binary Sequence: bytes, bytearray, memoryview 
+all this are Objects</br></br>
+
+list - this is mutable array (example: [1, 2, 3]. This is Referense Type.</br>
+tuple - this is immutable array (example: (1, 2, 3)). This is Type-Value.</br>
+range - this is immutable array, which we can get by use: Start, Stop, Step conditions for this array (example:  class range(start, stop, step=1, /)). This is Type-Value. </br></br>
+
+str - this is immutable sequences. We can use '' || "" || ''' ''' || """ """ for define str. This is Type-Value. </br></br>
+
+
+
+```python
+#for list (Referense Type)
+a = [1, 2, 3, 4]
+b = a
+a[0]=22
+print(f'a= {a}; b= {b}')  # a = [22, 2, 3, 4], b = [22, 2, 3, 4]
+
+#for tuple (Type-Value)
+a = (1, 2, 3, 4)
+b = a
+a=0
+print(f'a= {a}; b= {b}')  # a= 0; b= (1, 2, 3, 4)
+
+#for range (Type-Value)
+a = list(range(0, 30, 5))
+b = a
+a=0
+print(f'a= {a}; b= {b}')  # a= 0; b= [0, 5, 10, 15, 20, 25]
+
+#for str (Type-Value)
+a = "vvvvv"
+b = a
+a=0
+print(f'a= {a}; b= {b}')  # a= 0; b= vvvvv
+
+```
+
+
 3. mappings</br>
 4. classes</br>
 5. instance</br>
 6. exceptions</br>
+7. Infinity+NaN????? </br>
 
 built-in objects considered as false:</br>
- constants defined to be false: None and False</br>
- zero of any numeric type: 0, 0.0, 0j, Decimal(0), Fraction(0, 1)</br>
- empty sequences and collections: '', (), [], {}, set(), range(0)</br></br>
+ - constants defined to be false: None and False</br>
+ - zero of any numeric type: 0, 0.0, 0j, Decimal(0), Fraction(0, 1)</br>
+ - empty sequences and collections: '', (), [], {}, set(), range(0)</br></br>
 
 comparison operations: </br>
 <, <=, >, >=, ==, !=, is (object identity (instead of ==)), is not (negated object identity (instead of !=))</br></br>
 
-Numeric Types: int, float, complex</br>
+Boolean Operations — and, or, not </br>
+- x and y --- if x is false, then x, else y </br>
+- x or y  --- if x is true, then x, else y </br>
+- not x   --- if x is false, then True, else False </br>
+
+
 
 
 
