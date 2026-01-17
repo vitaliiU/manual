@@ -163,13 +163,17 @@ print(len(ex))                   #5
 ## BuiltInTypes
 https://docs.python.org/3.14/library/stdtypes.html#typesnumeric</br>
 
+In common case Python have Immutable (Type-Value) and Mutable (Referense Type) built-in types.</br>
+
 The principal built-in types are:</br>
 
 - [numerics](#numerics)
 - [sequence](#sequence)
+- [setTypes_mappingTypes_](#sequence)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!next!!!!!!!!!!!!!!!
 
 ### numerics: 
    int (Booleans are a subtype of integers.), float, complex</br>
+   https://docs.python.org/3.14/library/stdtypes.html#numeric-types-int-float-complex</br>
    all numeric types - is Type-Value
    ```python
    #int (Type-Value)
@@ -186,12 +190,21 @@ Binary Sequence: bytes, bytearray, memoryview
 all this are Objects</br></br>
 
 list - this is mutable array (example: [1, 2, 3]. This is Referense Type.</br>
+https://docs.python.org/3.14/library/stdtypes.html#lists
+</br>
 tuple - this is immutable array (example: (1, 2, 3)). This is Type-Value.</br>
-range - this is immutable array, which we can get by use: Start, Stop, Step conditions for this array (example:  class range(start, stop, step=1, /)). This is Type-Value. </br></br>
+https://docs.python.org/3.14/library/stdtypes.html#tuples
+</br>
+range - this is immutable array, which we can get by use: Start, Stop, Step conditions for this array (example:  class range(start, stop, step=1, /)). This is Type-Value. </br>
+https://docs.python.org/3.14/library/stdtypes.html#ranges
+</br>
 
-str - this is immutable sequences. We can use '' || "" || ''' ''' || """ """ for define str. This is Type-Value. </br></br>
+str - this is immutable sequences. We can use '' || "" || ''' ''' || """ """ for define str. This is Type-Value. </br>
+https://docs.python.org/3.14/library/stdtypes.html#text-sequence-type-str
+</br>
 
-
+Binary Sequence Types — bytes, bytearray, memoryview</br>
+https://docs.python.org/3.14/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview
 
 ```python
 #for list (Referense Type)
@@ -217,6 +230,20 @@ a = "vvvvv"
 b = a
 a=0
 print(f'a= {a}; b= {b}')  # a= 0; b= vvvvv
+
+#common Sequence operaton:
+#https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
+
+x in s       #True if an item of s is equal to x, else False
+x not in s   #False if an item of s is equal to x, else True
+s + t        #the concatenation of s and t
+* n or n * s #equivalent to adding s to itself n times
+s[i]         #ith item of s, origin 0
+s[i:j]       #slice of s from i to j
+s[i:j:k]     #slice of s from i to j with step k
+len(s)       #length of s
+min(s)       #smallest item of s
+max(s)       #largest item of s
 
 ```
 
