@@ -160,6 +160,7 @@ ex[1]=22
 print(ex[1])                     #22
 print(len(ex))                   #5
 ```
+
 ## BuiltInTypes
 https://docs.python.org/3.14/library/stdtypes.html#typesnumeric</br>
 
@@ -169,10 +170,14 @@ The principal built-in types are:</br>
 
 - [numerics](#numerics)
 - [sequence](#sequence)
-- [setTypes_mappingTypes_](#sequence)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!next!!!!!!!!!!!!!!!
+- [binarySequence](#binarySequence)
+
+  #next servise types (for iteration, mapping etc....)
+- [Iterator](#Iterator)  
+#- [setTypes_mappingTypes_]
 
 ### numerics: 
-   int (Booleans are a subtype of integers.), float, complex</br>
+   int (Booleans are a subclass of integers.), float, complex</br>
    https://docs.python.org/3.14/library/stdtypes.html#numeric-types-int-float-complex</br>
    all numeric types - is Type-Value
    ```python
@@ -183,6 +188,9 @@ The principal built-in types are:</br>
    print(f'a= {a}; b= {b}') #a=7, b=5
    #the same situation in Float (5.555), Complex (5.55+4.4j)
    ```
+   #Boolean Type - bool</br>
+   Booleans represent truth values. The bool type has exactly two constant instances: True and False.
+
 ### sequence: 
 Main Sequence: list, tuple, range </br>
 Text Sequence: str</br>
@@ -246,6 +254,37 @@ min(s)       #smallest item of s
 max(s)       #largest item of s
 
 ```
+
+### binarySequence 
+https://docs.python.org/3.14/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview </br>
+
+#Types — bytes, bytearray, memoryview</br></br>
+
+Bytes objects are immutable sequences of single bytes (Type-Value). </br>
+https://docs.python.org/3.14/library/stdtypes.html#bytes-objects </br></br>
+
+Bytearray objects are a mutable objects (Referense Type). </br>
+https://docs.python.org/3.14/library/stdtypes.html#bytearray-objects </br></br>
+
+Memoryview objects are immutable (Type-Value)</br>
+memoryview objects allow Python code to access the internal data of an object that supports the buffer protocol without copying. </br>
+https://docs.python.org/3.14/library/stdtypes.html#memory-views </br>
+
+```python
+v = memoryview(b'abcdefg')
+print(f'v= {v[2]}')           #v= 99
+
+w=v
+print(f'w= {w[2]}')           #w= 99
+
+w = memoryview(b'gfedcba')
+print(f'vTryChange= {v[2]}')  #vTryChange= 99
+print(f'wTryChange= {w[2]}')  #wTryChange= 101
+```
+
+### Iterator
+https://docs.python.org/3.14/library/stdtypes.html#iterator-types </br>
+Python supports a concept of iteration over containers. This is implemented using two distinct methods; these are used to allow user-defined classes to support iteration.</br>
 
 
 3. mappings</br>
