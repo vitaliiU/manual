@@ -66,9 +66,9 @@ $ python3.12
 
 ## CommonRules
 
-// for Python don't need use any tags (like <?php> etc)
+for Python don't need use any tags (like <?php> etc)
 
-//simple examples: 
+simple examples: 
 
 ```python
 # this is comments
@@ -170,11 +170,17 @@ The principal built-in types are:</br>
 
 - [numerics](#numerics)
 - [sequence](#sequence)
-- [binarySequence](#binarySequence)
-
-  #next servise types (for iteration, mapping etc....)
+- [binarySequence](#binarySequence) </br>
+  next servise types (for iteration, mapping etc....) </br>
 - [Iterator](#Iterator)  
-#- [setTypes_mappingTypes_]
+- [Set](#Set) 
+- [Mapping](#Mapping) 
+- [ContextManager](#ContextManager) 
+- [Annotation](#Annotation) 
+how some dudes have said: SOME OTHER BUILT-IN TYPES)) </br>
+
+
+
 
 ### numerics: 
    int (Booleans are a subclass of integers.), float, complex</br>
@@ -188,7 +194,7 @@ The principal built-in types are:</br>
    print(f'a= {a}; b= {b}') #a=7, b=5
    #the same situation in Float (5.555), Complex (5.55+4.4j)
    ```
-   #Boolean Type - bool</br>
+   Boolean Type - bool</br>
    Booleans represent truth values. The bool type has exactly two constant instances: True and False.
 
 ### sequence: 
@@ -258,7 +264,7 @@ max(s)       #largest item of s
 ### binarySequence 
 https://docs.python.org/3.14/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview </br>
 
-#Types — bytes, bytearray, memoryview</br></br>
+Types — bytes, bytearray, memoryview</br></br>
 
 Bytes objects are immutable sequences of single bytes (Type-Value). </br>
 https://docs.python.org/3.14/library/stdtypes.html#bytes-objects </br></br>
@@ -284,7 +290,51 @@ print(f'wTryChange= {w[2]}')  #wTryChange= 101
 
 ### Iterator
 https://docs.python.org/3.14/library/stdtypes.html#iterator-types </br>
-Python supports a concept of iteration over containers. This is implemented using two distinct methods; these are used to allow user-defined classes to support iteration.</br>
+Python supports a concept of iteration over containers. This is implemented using two distinct methods; these are used to allow user-defined classes to support iteration. </br>
+
+### Set 
+https://docs.python.org/3.14/library/stdtypes.html#set-types-set-frozenset </br>
+
+Set Types — set, frozenset </br>
+A set object is an unordered collection of distinct hashable objects. Common uses include membership testing, removing duplicates from a sequence, and computing mathematical operations such as intersection, union, difference, and symmetric difference. </br>
+The primary difference between a Set and Frozenset is mutability: set is mutable (Referense Type), while frozenset is immutable (Type-Value).
+
+### Mapping
+https://docs.python.org/3.14/library/stdtypes.html#mapping-types-dict </br>
+
+Mapping Types — dict </br>
+A mapping object maps hashable values to arbitrary objects. Mappings are mutable objects. There is currently only one standard mapping type, the dictionary.  </br>
+
+```python
+a = dict(one=1, two=2, three=3)
+b = {'one': 1, 'two': 2, 'three': 3}
+c = dict(zip(['one', 'two', 'three'], [1, 2, 3]))
+d = dict([('two', 2), ('one', 1), ('three', 3)])
+e = dict({'three': 3, 'one': 1, 'two': 2})
+f = dict({'one': 1, 'three': 3}, two=2)
+a == b == c == d == e == f                   #true
+
+```
+
+
+### ContextManager 
+https://docs.python.org/3.14/library/stdtypes.html#context-manager-types </br>
+
+Python’s with statement supports the concept of a runtime context defined by a context manager. This is implemented using a pair of methods that allow user-defined classes to define a runtime context that is entered before the statement body is executed and exited when the statement ends </br>
+
+### Annotation
+https://docs.python.org/3.14/library/stdtypes.html#type-annotation-types-generic-alias-union </br>
+
+Type Annotation Types — Generic Alias, Union </br>
+
+Generic Alias Type </br>
+https://docs.python.org/3.14/library/stdtypes.html#generic-alias-type </br>
+GenericAlias objects are generally created by subscripting a class. They are most often used with container classes, such as list or dict. For example, list[int] is a GenericAlias object created by subscripting the list class with the argument int. GenericAlias objects are intended primarily for use with type annotations. </br>
+
+Union Type </br>
+https://docs.python.org/3.14/library/stdtypes.html#union-type </br>
+A union object holds the value of the | (bitwise or) operation on multiple type objects. These types are intended primarily for type annotations. The union type expression enables cleaner type hinting syntax compared to subscripting typing.Union. </br>
+
 
 
 3. mappings</br>
