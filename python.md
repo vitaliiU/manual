@@ -178,6 +178,9 @@ The principal built-in types are:</br>
 - [ContextManager](#ContextManager) 
 - [Annotation](#Annotation) 
 how some dudes have said: SOME OTHER BUILT-IN TYPES)) </br>
+- [Functions](#Functions) 
+- [Classes](#Classes) 
+- [Modules](#Modules) 
 
 
 
@@ -335,6 +338,34 @@ Union Type </br>
 https://docs.python.org/3.14/library/stdtypes.html#union-type </br>
 A union object holds the value of the | (bitwise or) operation on multiple type objects. These types are intended primarily for type annotations. The union type expression enables cleaner type hinting syntax compared to subscripting typing.Union. </br>
 
+
+
+### Functions
+https://docs.python.org/3.14/library/stdtypes.html#functions </br>
+
+A function definition defines a user-defined function object </br>
+There are really two flavors of function objects: built-in functions and user-defined functions. Both support the same operation (to call the function), but the implementation is different, hence the different object types. </br>
+```python
+
+def func(): pass  #pass - implement logic later
+
+def sum(a, b):
+    return (a + b)
+
+
+```
+
+
+
+### Classes
+https://docs.python.org/3.14/library/stdtypes.html#classes-and-class-instances
+ ???????????????????????????
+
+### Modules
+https://docs.python.org/3.14/library/stdtypes.html#modules
+Python modules are used to organize code, enable reusability, and simplify complex programming tasks. They are essentially files containing Python code (functions, classes, and variables) that can be imported and used in other programs </br>
+The only special operation on a module is attribute access: m.name, where m is a module and name accesses a name defined in m’s symbol table. Module attributes can be assigned to.</br>
+A special attribute of every module is "__dict__". This is the dictionary containing the module’s symbol table. </br>
 
 
 3. mappings</br>
