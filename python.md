@@ -36,6 +36,8 @@ https://www.python.org/</br>
 https://docs.python.org/3.14/</br>
 https://docs.python.org/3.14/tutorial/index.html</br></br>
 
+https://www.w3schools.com/python/default.asp  </br>
+
 online compile Python</br>
 https://www.online-python.com/</br>
 
@@ -342,20 +344,94 @@ A union object holds the value of the | (bitwise or) operation on multiple type 
 
 ### Functions
 https://docs.python.org/3.14/library/stdtypes.html#functions </br>
+https://www.w3schools.com/python/python_functions.asp </br>
 
-A function definition defines a user-defined function object </br>
 There are really two flavors of function objects: built-in functions and user-defined functions. Both support the same operation (to call the function), but the implementation is different, hence the different object types. </br>
+A function definition defines a user-defined function object </br>
 ```python
-
 def func(): pass  #pass - implement logic later
-
+#####
 def sum(a, b):
     return (a + b)
-
-
+print(sum(2, 3))  # 5
+#####
+def func(add, *numbers):
+  total = 0
+  for num in numbers:
+    total += num
+  return (add + total)
+print(func(500, 1, 2, 3, 5, 8))  # 519
+#####
+def func(a, b, c):
+  return a + b + c
+num = [3, 4, 5]
+res = func(*num) 
+print(res)  #12
+#####
+def func(**var):
+  print("Type:", type(var))    #Type: <class 'dict'>
+  print("Name:", var["name"])  #Name: Tom
+  print("Age:", var["age"])    #Age: 30
+  print("All data:", var)      #All data: {'name': 'Tom', 'age': 30, 'city': 'Bergen'}
+func(name = "Tom", age = 30, city = "Bergen")
+#####
+def func(fname, lname):
+  print("Hello", fname, lname)
+person = {"fname": "Jim", "lname": "Smit"}
+func(**person)  #Hello Jim Smit
 ```
+</br>
+SCOPE</br>
+A variable created in the main body of the Python code is a global variable and belongs to the global scope. Global variables are available from within any scope, global and local. Exept this possible define GlobalVariable by use definition: "global" inside any scope</br>
+A variable created inside a function belongs to the local scope of that function, and can only be used inside that function. </br>
+The "nonlocal" keyword is used to work with variables inside nested functions. The nonlocal keyword makes the variable belong to the outer function. </br>
+Python follows the LEGB rule when looking up variable names, and searches for them in this order: </br>
+- Local - Inside the current function  </br>
+- Enclosing - Inside enclosing functions (from inner to outer) </br>
+- Global - At the top level of the module </br>
+- Built-in - In Python's built-in namespace </br>
 
 
+```python
+x = "globalX"
+def func():
+  x = "localX"
+  z = "tryLocalNotSuccess"
+  global y 
+  y = "tryLocalGlobal"
+  print(x)     #localX
+func()
+print(x)       #globalX
+print(y)       #tryLocalGlobal
+print(z)       #NameError: name 'z' is not defined
+#####
+def func1():
+  x = "This'll replace theor))"
+  def func2():
+    nonlocal x
+    x = "hi"
+  func2()
+  return x
+print(func1()) #hi
+#### LEGB:
+x = "global"
+def outer():
+  x = "enclosing"
+  yCallEnclosing = "callEnclosing"
+  def inner():
+    x = "local"
+    print("Inner:", x)
+    print("InnerCallEnclosing:", yCallEnclosing)
+  inner()
+  print("Outer:", x)
+outer()
+print("Global:", x)
+#will print in order of list:
+# Inner: local
+# InnerCallEnclosing: callEnclosing
+# Outer: enclosing
+# Global: global
+```
 
 ### Classes
 https://docs.python.org/3.14/library/stdtypes.html#classes-and-class-instances
