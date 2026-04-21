@@ -264,6 +264,19 @@ len(s)       #length of s
 min(s)       #smallest item of s
 max(s)       #largest item of s
 
+#what is lambda (anonimusFunc) see in Functions
+num = [1, 2, 3, 4, 5]
+mult = list(map(lambda x: x * 5, num)) #map (builtIn func) return changde array
+print(mult) #[5, 10, 15, 20, 25]
+#####
+num = [1, 2, 3, 4, 5, 6, 7, 8]
+nechetn = list(filter(lambda x: x % 2 != 0, num)) # filter (builtIn func) return some values from this array
+print(nechetn)  #[1, 3, 5, 7]
+#####
+arr = ["alotletters", "one", "two", "three", "fiftyfive"]
+sortW = sorted(arr, key=lambda x: len(x))  # sorted (builtIn func) return this array in some order of setted condition
+print(sortW)  # ['one', 'two', 'three', 'fiftyfive', 'alotletters']
+
 ```
 
 ### binarySequence 
@@ -346,6 +359,14 @@ A union object holds the value of the | (bitwise or) operation on multiple type 
 https://docs.python.org/3.14/library/stdtypes.html#functions </br>
 https://www.w3schools.com/python/python_functions.asp </br>
 
+- [mainFunc](#mainFunc)
+- [scope](#scope)
+- [decorator](#decorator)
+- [lamdaAnonimus](#lamdaAnonimus)
+
+
+#### mainFunc
+
 There are really two flavors of function objects: built-in functions and user-defined functions. Both support the same operation (to call the function), but the implementation is different, hence the different object types. </br>
 A function definition defines a user-defined function object </br>
 ```python
@@ -381,7 +402,9 @@ person = {"fname": "Jim", "lname": "Smit"}
 func(**person)  #Hello Jim Smit
 ```
 </br>
-SCOPE</br>
+
+#### scope
+
 A variable created in the main body of the Python code is a global variable and belongs to the global scope. Global variables are available from within any scope, global and local. Exept this possible define GlobalVariable by use definition: "global" inside any scope</br>
 A variable created inside a function belongs to the local scope of that function, and can only be used inside that function. </br>
 The "nonlocal" keyword is used to work with variables inside nested functions. The nonlocal keyword makes the variable belong to the outer function. </br>
@@ -431,7 +454,60 @@ print("Global:", x)
 # InnerCallEnclosing: callEnclosing
 # Outer: enclosing
 # Global: global
+``` 
+#### decorator
+Decorators let you add extra behavior to a function, without changing the function's code.
+A decorator is a function that takes another function as input and returns a new function. </br>
+
+```python
+def change(func):
+  def inner():
+    return func().upper()
+  return inner
+@change
+def firstFunc():
+  return "hi hi"
+@change
+def secondFunc():
+  return "bye bye"
+print(firstFunc())  #HI HI (insted of hi hi)
+print(secondFunc())  #BYE BYE (insted of bye bye)
+
 ```
+#### lamdaAnonimus
+A lambda function is a small anonymous function (func without name).
+A lambda function can take any number of arguments, but can only have one expression. 
+We can assign a lambda function to any variable, or can use it in Return another Func (see below)</br>
+
+Lambda (anonymous) function as rule use to inside another function  </br>
+Lambda (anonymous) functions are commonly used with built-in functions like map(), filter(), and sorted(). </br>
+
+```python
+x = lambda a, b, c : a + b + c
+print(x(7, 8, 9))  #24
+#####
+def func(n):
+  return lambda a : a * n
+doubler = func(2)
+tripler = func(3)
+print(doubler(99))  # 198
+print(tripler(99))  # 297
+#####
+num = [1, 2, 3, 4, 5]
+mult = list(map(lambda x: x * 5, num))
+print(mult) #[5, 10, 15, 20, 25]
+#####
+num = [1, 2, 3, 4, 5, 6, 7, 8]
+nechetn = list(filter(lambda x: x % 2 != 0, num))
+print(nechetn)  #[1, 3, 5, 7]
+#####
+arr = ["alotletters", "one", "two", "three", "fiftyfive"]
+sortW = sorted(arr, key=lambda x: len(x))
+print(sortW)  # ['one', 'two', 'three', 'fiftyfive', 'alotletters']
+
+```
+
+
 
 ### Classes
 https://docs.python.org/3.14/library/stdtypes.html#classes-and-class-instances
