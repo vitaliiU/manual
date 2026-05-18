@@ -363,6 +363,7 @@ https://www.w3schools.com/python/python_functions.asp </br>
 - [scope](#scope)
 - [decorator](#decorator)
 - [lamdaAnonimus](#lamdaAnonimus)
+- [generator](#generator)
 
 
 #### mainFunc
@@ -507,6 +508,63 @@ print(sortW)  # ['one', 'two', 'three', 'fiftyfive', 'alotletters']
 
 ```
 
+#### generator
+
+Generator - this is function with several RETURN. Instead of Return we use Yield command. </br>
+Unlike return, which terminates the function, yield pauses it and can be called multiple times. </br>
+When a generator function is called, it returns a generator object, which is an iterator. </br>
+The code inside the function is not executed yet, it is only compiled. The function only executes when we iterate over the generator. </br>
+We can manually iterate through a generator using the --- next() --- function  </br>
+The send() method allows you to send a value to the generator  </br>
+The close() method stops the generator </br>
+
+
+```python
+#simple generator
+def my_generator():
+  yield 1
+  yield 2
+  yield 3
+for value in my_generator():
+  print(value)  # 1 </br> 2 </br> 3
+
+#save memory
+def large_sequence(n):
+  for i in range(n):
+    yield i
+# This doesn't create a million numbers in memory
+gen = large_sequence(1000000)
+print(next(gen))  # 0
+print(next(gen))  # 1
+print(next(gen))  # 2
+
+# Calculate sum of squares without creating a list
+total = sum(x * x for x in range(10))
+print(total) # 285
+
+#method --send--
+def echo_generator():
+  while True:
+    received = yield
+    print("Received:", received)
+gen = echo_generator()
+next(gen) # Prime the generator
+gen.send("Hello")  #Received: Hello
+gen.send("World")  #Received: World
+
+#method --close--
+def my_gen():
+  try:
+    yield 1
+    yield 2
+    yield 3
+  finally:
+    print("Generator closed")
+gen = my_gen()
+print(next(gen)) # 1
+gen.close()      # Generator closed
+
+```
 
 
 ### Classes
